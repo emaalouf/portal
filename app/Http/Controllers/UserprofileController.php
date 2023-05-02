@@ -14,67 +14,29 @@ use Illuminate\Http\Request;
 
 class UserprofileController extends Controller
 {
-    public function index()
-    {
-        $personal_information   = PersonalInformation::get()->toArray();
+  public function index()
+{
+    $personal_information = PersonalInformation::get()->toArray();
+    $contact_information = ContactInformation::get()->toArray();
+    $education = Education::get()->toArray();
+    $experience = Experience::get()->toArray();
+    $interests = Interests::get()->toArray();
+    $languages = Languages::get()->toArray();
+    $projects = Projects::get()->toArray();
+    $skills = Skills::get()->toArray();
+    
+    return view('CV.index', compact(
+        'personal_information',
+        'contact_information',
+        'education',
+        'experience',
+        'interests',
+        'languages',
+        'projects',
+        'skills'
+    ));
+}
 
-        if (!empty($personal_information)) {
-
-            $user_data = array();
-            foreach ($personal_information as $personal_info) {
-
-                $user_id = $personal_info['id'];
-
-                if (!empty($user_id)) {
-                    $user_info['personal_info']         = $personal_info;
-
-
-                    $contact_info                       = ContactInformation::find($user_id);
-                    if (!empty($contact_info)) {
-
-                        $user_info['contact_info']      = $contact_info->toArray();
-                    }
-
-                    $education_info                     = Education::find($user_id);
-                    if (!empty($education_info)) {
-                        $user_info['education_info']    = $education_info->toArray();
-                    }
-
-                    $experience_info                    = Experience::find($user_id);
-                    if (!empty($experience_info)) {
-                        $user_info['experience_info']   = $experience_info->toArray();
-                    }
-
-                    $project_info                       = Projects::find($user_id);
-                    if (!empty($project_info)) {
-                        $user_info['project_info']      = $project_info->toArray();
-                    }
-
-                    $skill_info                         = Skills::find($user_id);
-                    if (!empty($skill_info)) {
-                        $user_info['skill_info']        = $skill_info->toArray();
-                    }
-
-                    $language_info                      = Languages::find($user_id);
-                    if (!empty($language_info)) {
-                        $user_info['language_info']     = $language_info->toArray();
-                    }
-
-                    $interest_info                      = Interests::find($user_id);
-                    if (!empty($interest_info)) {
-                        $user_info['interest_info']     = $interest_info->toArray();
-                    }
-                }
-
-                array_push($user_data, $user_info);
-            }
-        } else {
-            $user_data = array();
-
-        }
-
-        return view('CV.index', ['users_data' => $user_data]);
-    }
 
     public function view($id)
     {
@@ -98,7 +60,7 @@ class UserprofileController extends Controller
             $info['interest_info']      = $interest_information;
         }
 
-        return view('view', ['information' => $info]);
+        return view('CV.view', ['information' => $info]);
     }
 
     public function create()
