@@ -40,7 +40,16 @@ Route::middleware('auth')->prefix('account')->group(function () {
   //applyjobs
   Route::get('apply-job', [AccountController::class, 'applyJobView'])->name('account.applyJob');
   Route::post('apply-job', [AccountController::class, 'applyJob'])->name('account.applyJob');
-
+Route::prefix('cv')->group(function () {
+    Route::get('/', [UserprofileController::class, 'index'])->name('index');
+    Route::get('/', [UserprofileController::class, 'index'])->name('index');
+    Route::get('/user/{id}', [UserprofileController::class, 'view'])->name('user.profile.view');
+    Route::get('/create', [UserprofileController::class, 'create'])->name('user.profile.create');
+    Route::post('/store', [UserprofileController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [UserprofileController::class, 'edit'])->name('edit');
+    Route::post('/update', [UserprofileController::class, 'update'])->name('update');
+    Route::post('/destroy/{id}', [UserprofileController::class, 'destroy'])->name('destroy');
+});
   //Admin Role Routes
   Route::group(['middleware' => ['role:admin']], function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('account.dashboard');
@@ -82,15 +91,7 @@ Route::middleware('auth')->prefix('account')->group(function () {
 });
 
 
-Route::prefix('cv')->group(function () {
-    Route::get('/', [UserprofileController::class, 'index'])->name('index');
-    Route::get('/user/{id}', [UserprofileController::class, 'view'])->name('user.profile.view');
-    Route::get('/create', [UserprofileController::class, 'create'])->name('user.profile.create');
-    Route::post('/store', [UserprofileController::class, 'store'])->name('store');
-    Route::get('/edit/{id}', [UserprofileController::class, 'edit'])->name('edit');
-    Route::post('/update', [UserprofileController::class, 'update'])->name('update');
-    Route::post('/destroy/{id}', [UserprofileController::class, 'destroy'])->name('destroy');
-});
+
 Route::view('about', 'layouts.about');
 Route::view('contact', 'contact.index');
 

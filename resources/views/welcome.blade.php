@@ -51,7 +51,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="/cv">CV Template</a>
+                                <a class="nav-link" href="/register">CV Template</a>
                             </li>
     
                             <li class="nav-item">

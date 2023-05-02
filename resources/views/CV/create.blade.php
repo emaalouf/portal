@@ -25,26 +25,7 @@
 
 
 <div class="content-wrapper mt-4">
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-8">
-                    <h1 class="m-0">Manage User Profiles</h1>
-                </div>
- 
-            </div>
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <ul class="page-breadcrumb breadcrumb">
-                        <li class="breadcrumb-item"><i class="fas fa-angle-right"></i></li>
-                        <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
-                        <li class="breadcrumb-item"><i class="fas fa-angle-right"></i></li>
-                        <li class="breadcrumb-item">Create User profile</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <div class="container-fluid">
         <div class="row mt-3">
@@ -738,3 +719,4 @@
     </div>
 </div>
 
+@include('inc.footer')
