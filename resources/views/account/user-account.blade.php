@@ -20,6 +20,7 @@
     
 </head>
 <body>
+<div style="display: flex; flex-direction: column; align-items: center;">
 
     <main>
         <nav class="navbar navbar-expand-lg">
@@ -68,6 +69,7 @@
             </div>
         </div>
     </nav>
+
 </main>
 
 
@@ -111,9 +113,11 @@
                                     <p class="m-b-10 f-w-600">Password</p>
                                     <a href="{{route('account.changePassword')}}" class="btn primary-outline-btn">Change password</a>
                                 </div>
+                            </div>
+                             <div class="row">
                                 <div class="col-sm-6">
-                                  <p class="m-b-10 f-w-600">Logout</p>
-                                    <a href="{{route('logout')}}" class="btn btn-outline-dark">Logout</a>
+                                    <p class="m-b-10 f-w-600">Take me to job portal</p>
+                                    <a href="{{route('account.changePassword')}}" class="btn primary-outline-btn">Job Portal</a>
                                 </div>
                             </div>
                             <ul class="social-link list-unstyled m-t-40 m-b-10">
@@ -128,6 +132,7 @@
         </div>
     </div>
   </div>
+</div>
 </div>
 @include('inc.footer')
 

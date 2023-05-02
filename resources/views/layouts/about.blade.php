@@ -33,7 +33,7 @@
 
         <main>
 
-            
+            @include('inc.navbar')
 
 
             <header class="site-header d-flex flex-column justify-content-center align-items-center">
@@ -52,6 +52,9 @@
 
                         <div class="col-lg-8 col-12 mx-auto">
                             <div class="pb-5 mb-5">
+                                <div class="text-center mb-4">
+                                    <button class="btn btn-primary">Create Now</button>
+                                </div>
                                 <div class="section-title-wrap mb-4">
                                     <h4 class="section-title">Create Your Profesional CV Now</h4>
                                 </div>
@@ -77,6 +80,7 @@
                      
 
         @include('inc.footer')
+        </main>
 
 
 

@@ -1,4 +1,6 @@
-
+      <html>
+      
+      @include('inc.navbar')
 
 
 
