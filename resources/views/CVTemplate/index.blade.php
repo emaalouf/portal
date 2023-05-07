@@ -38,7 +38,7 @@
                             
                             <input type="checkbox" id="template1" name="template1" onchange="handleCheckboxChange('template1', 'template2')">
                             <img src="images/profile/1.jpg" alt="profile_pic">
-                            <label for="template1"><a id="a" href="detail1.html">Use this Template</a></label>
+                           
                         </div>
                         
                     </div>
@@ -54,7 +54,7 @@
 
                             <input type="checkbox" id="template2" name="template2" onchange="handleCheckboxChange('template2', 'template1')">
                             <img src="images/profile/2.jpg" alt="profile_pic">
-                            <label for="template2"><a id="a" href="detail2.html">Use this Template</a></label>
+                            
                            
                         
                             
