@@ -24,6 +24,7 @@
             </div>
         </div>
     </header>
+    
 
 
     <section class="latest-podcast-section section-padding" id="section_2">
@@ -62,6 +63,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="text-center" style="padding:10px;">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
     </section>
 
 </main>
