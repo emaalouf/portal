@@ -94,4 +94,4 @@ Route::prefix('cv')->group(function () {
 
 Route::view('about', 'layouts.about');
 Route::view('contact', 'contact.index');
-
+Route::view('CVTemplates', 'CVTemplate.index');

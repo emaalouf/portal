@@ -64,5 +64,4 @@
             </div>
         </div>
     </nav>
-</main>
-</body>
+
