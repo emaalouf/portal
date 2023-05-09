@@ -50,7 +50,7 @@
                 </div>
                                     <div class="dropdown ms-4">
                 <button class="btn custom-btn custom-border-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dashboard
+                    <a class="dropdown-item" href="account/overview/">Dashboard</a>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>

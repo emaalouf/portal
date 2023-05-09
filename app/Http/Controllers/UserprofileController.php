@@ -11,19 +11,24 @@ use App\Models\PersonalInformation;
 use App\Models\Projects;
 use App\Models\Skills;
 use Illuminate\Http\Request;
+use PDF;
 
 class UserprofileController extends Controller
 {
-  public function index()
+ public function index()
 {
-    $personal_information = PersonalInformation::get()->toArray();
-    $contact_information = ContactInformation::get()->toArray();
-    $education = Education::get()->toArray();
-    $experience = Experience::get()->toArray();
-    $interests = Interests::get()->toArray();
-    $languages = Languages::get()->toArray();
-    $projects = Projects::get()->toArray();
-    $skills = Skills::get()->toArray();
+    // Get the authenticated user's ID
+    $userId = auth()->id();
+
+    // Fetch the data for the authenticated user
+    $personal_information = PersonalInformation::where('user_id', $userId)->get()->toArray();
+    $contact_information = ContactInformation::where('user_id', $userId)->get()->toArray();
+    $education = Education::where('user_id', $userId)->get()->toArray();
+    $experience = Experience::where('user_id', $userId)->get()->toArray();
+    $interests = Interests::where('user_id', $userId)->get()->toArray();
+    $languages = Languages::where('user_id', $userId)->get()->toArray();
+    $projects = Projects::where('user_id', $userId)->get()->toArray();
+    $skills = Skills::where('user_id', $userId)->get()->toArray();
     
     return view('CV.index', compact(
         'personal_information',
@@ -36,6 +41,38 @@ class UserprofileController extends Controller
         'skills'
     ));
 }
+
+public function download()
+{
+    // Get the authenticated user's ID
+    $userId = auth()->id();
+
+    // Fetch the data for the authenticated user
+    $personal_information = PersonalInformation::where('user_id', $userId)->get()->toArray();
+    $contact_information = ContactInformation::where('user_id', $userId)->get()->toArray();
+    $education = Education::where('user_id', $userId)->get()->toArray();
+    $experience = Experience::where('user_id', $userId)->get()->toArray();
+    $interests = Interests::where('user_id', $userId)->get()->toArray();
+    $languages = Languages::where('user_id', $userId)->get()->toArray();
+    $projects = Projects::where('user_id', $userId)->get()->toArray();
+    $skills = Skills::where('user_id', $userId)->get()->toArray();
+
+    // Generate the PDF with the data
+    $pdf = PDF::loadView('CV.pdf', compact(
+        'personal_information',
+        'contact_information',
+        'education',
+        'experience',
+        'interests',
+        'languages',
+        'projects',
+        'skills'
+    ));
+
+    // Download the PDF
+    return $pdf->download('CV.pdf');
+}
+
 
 
     public function view($id)
@@ -70,15 +107,21 @@ class UserprofileController extends Controller
 
     public function store(Request $request)
     {
-        $personal_info = new PersonalInformation();
-        $personal_info->first_name        = $request->first_name;
-        $personal_info->last_name         = $request->last_name;
-        $personal_info->profile_title     = $request->profile_title;
-        $personal_info->about_me          = $request->about_me;
-        if ($request->file('image_path')) {
-            $picture       = !empty($request->file('image_path')) ? $request->file('image_path')->getClientOriginalName() : '';
-            $request->file('image_path')->move(public_path('assets/images/'), $picture);
-        }
+         $user_id = auth()->id();
+
+    $personal_info = new PersonalInformation();
+    $personal_info->user_id           = $user_id;
+    $personal_info->first_name        = $request->first_name;
+    $personal_info->last_name         = $request->last_name;
+    $personal_info->profile_title     = $request->profile_title;
+    $personal_info->about_me          = $request->about_me;
+    
+    if ($request->file('image_path')) {
+        $picture = $request->file('image_path')->getClientOriginalName();
+        $request->file('image_path')->move(public_path('assets/images/'), $picture);
+        $personal_info->image_path = $picture;
+    }
+
         $personal_info->image_path        = isset($picture) && !empty($picture) ? $picture : '';
         $personal_info->save();
 
@@ -448,23 +491,21 @@ class UserprofileController extends Controller
     }
 
     public function destroy($id)
-    {
+{
+    if (!empty($id)) {
+        PersonalInformation::find($id)->delete();
+        ContactInformation::where('user_id', $id)->delete();
+        Education::where('user_id', $id)->delete();
+        Experience::where('user_id', $id)->delete();
+        Projects::where('user_id', $id)->delete();
+        Skills::where('user_id', $id)->delete();
+        Languages::where('user_id', $id)->delete();
+        Interests::where('user_id', $id)->delete();
 
-        if (!empty($id)) {
-
-            PersonalInformation::find($id)->delete();
-            ContactInformation::where('user_id', $id)->delete();
-            Education::where('user_id', $id)->delete();
-            Experience::where('user_id', $id)->delete();
-            Projects::where('user_id', $id)->delete();
-            Skills::where('user_id', $id)->delete();
-            Languages::where('user_id', $id)->delete();
-            Interests::where('user_id', $id)->delete();
-
-            return redirect()->back()->withSuccess("User Profile deleted successfully");
-        } else {
-
-            return redirect()->back()->withSuccess("Something went wrong");
-        }
+        return redirect()->back()->withSuccess("User Profile deleted successfully");
+    } else {
+        return redirect()->back()->withSuccess("Something went wrong");
     }
+}
+
 }

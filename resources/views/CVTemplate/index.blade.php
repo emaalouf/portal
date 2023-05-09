@@ -24,51 +24,53 @@
             </div>
         </div>
     </header>
+
+    {{-- <form action="{{ route('save_template') }}" method="post"> --}}
+        @csrf
     
+        <section class="latest-podcast-section section-padding" id="section_2">
 
+            <div class="row justify-content-center">
 
-    <section class="latest-podcast-section section-padding" id="section_2">
-
-        <div class="row justify-content-center">
-
-            <div class="col-lg-6 col-12 mb-4 mb-lg-0">
-                <div class="custom-block d-flex">
-                    <div class="">
-                        <div class="custom-block-icon-wrap">
-                            
-                            <input type="checkbox" id="template1" name="template1" onchange="handleCheckboxChange('template1', 'template2')">
-                            <img src="images/profile/1.jpg" alt="profile_pic">
-                           
-                        </div>
-                        
-                    </div>
-                  
-                </div>
-            </div>
-          
-       
-            <div class="col-lg-6 col-12 mb-4 mb-lg-0">
-                <div class="custom-block d-flex">
-                    <div class="">
-                        <div class="custom-block-icon-wrap">
-
-                            <input type="checkbox" id="template2" name="template2" onchange="handleCheckboxChange('template2', 'template1')">
-                            <img src="images/profile/2.jpg" alt="profile_pic">
-                            
-                           
-                        
+                <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+                    <div class="custom-block d-flex">
+                        <div class="">
+                            <div class="custom-block-icon-wrap">
+                                
+                                <input type="checkbox" id="template1" name="template1" onchange="handleCheckboxChange('template1', 'template2')">
+                                <img src="images/profile/1.jpg" alt="profile_pic">
+                               
+                            </div>
                             
                         </div>
+                      
+                    </div>
+                </div>
+              
+           
+                <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+                    <div class="custom-block d-flex">
+                        <div class="">
+                            <div class="custom-block-icon-wrap">
+
+                                <input type="checkbox" id="template2" name="template2" onchange="handleCheckboxChange('template2', 'template1')">
+                                <img src="images/profile/2.jpg" alt="profile_pic">
+                                
+                               
+                            
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="text-center" style="padding:10px;">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
+            <div class="text-center" style="padding:10px;">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
 
-    </section>
+        </section>
+    </form>
 
 </main>
 

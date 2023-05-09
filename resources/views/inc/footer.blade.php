@@ -36,18 +36,7 @@
 
         </div>
 
-        <div class="row pt-5 mt-5 text-center">
-            <div class="col-md-12">
-                <div class="border-top pt-5">
-                    <p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        &copy; 2023 <a href="https://colorlib.com" target="_blank" class="text-primary">CJ Resume</a> All rights reserved | Designed by <a href="https://templatemo.com" target="_blank" class="text-primary">TemplateMo</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
-                </div>
-            </div>
-
-        </div>
+       
     </div>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>

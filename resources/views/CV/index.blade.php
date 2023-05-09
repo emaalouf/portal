@@ -10,23 +10,45 @@
                                        <div class="col-12">
                                            <div class="card mb-5">
                                                <div class="card-body">
-                                                <button type="button" class="btn btn-primary"><a href="/cv/create" style="color:white;">Create CV</a></button>
-                                                   <div class="container-fluid wrapper">
-                                                       <div class="row">
-                                                           <div>
-                                                            @foreach($personal_information as $personal_information)
-                                                            {{ $personal_information['first_name'] }} {{ $personal_information['last_name'] }}<br />
-                                                            {{ $personal_information['profile_title'] }} {{ $personal_information['about_me'] }}
-                                                            <br /><button type="button" class="btn btn-danger"><a href="/cv/destroy/{{ $personal_information['id']}}" style="color:white;">Delete CV</a></button>
-                                                            <br />
-                                                            <br /><button type="button" class="btn btn-primary"><a href="/cv/edit/{{ $personal_information['id']}}" style="color:white;">Edit CV</a></button>
-                                                            <br />
-                                                            <br /><button type="button" class="btn btn-success"><a href="/cv/download/{{ $personal_information['id']}}" style="color:white;">Download CV</a></button>
+                                                <button type="button" class="btn btn-primary"><a href="/account/cv/create" style="color:white;">Create CV</a></button>
+                                                  <div class="container-fluid wrapper">
+    <div class="row">
+        @foreach($personal_information as $info)
+        <div class="col-md-12">
+            <div class="card my-4">
+                <div class="card-body">
+                    <h3>{{ $info['first_name'] }} {{ $info['last_name'] }}</h3>
+                    <h5>{{ $info['profile_title'] }}</h5>
+                    <p>{{ $info['about_me'] }}</p>
+                </div>
+                <div class="card-footer">
+    <div class="row">
+        <div class="col">
+            <form method="POST" action="{{ route('destroy', $info['id']) }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger mr-2">Delete CV</button>
+            </form>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary mr-2">
+                <a href="/account/cv/edit/{{ $info['id']}}" style="color:white;">Edit CV</a>
+            </button>
+        </div>
+        <div class="col">
+            <button class="btn btn-success">
+                <a href="/account/cv/download-cv" style="color:white;">Download CV</a>
+            </button>
+        </div>
+    </div>
+</div>
 
-                                                            @endforeach
-                                                           </div>
-                                                       </div>
-                                                   </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
+
                                                </div>
                                            </div>
                                        </div>

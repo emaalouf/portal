@@ -216,7 +216,7 @@
         </main>
 
 
-       @include('inc.newfooter')
+       @include('inc.footer')
 
 
     </body>

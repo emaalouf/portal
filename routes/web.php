@@ -42,13 +42,14 @@ Route::middleware('auth')->prefix('account')->group(function () {
   Route::post('apply-job', [AccountController::class, 'applyJob'])->name('account.applyJob');
 Route::prefix('cv')->group(function () {
     Route::get('/', [UserprofileController::class, 'index'])->name('index');
-    Route::get('/', [UserprofileController::class, 'index'])->name('index');
     Route::get('/user/{id}', [UserprofileController::class, 'view'])->name('user.profile.view');
     Route::get('/create', [UserprofileController::class, 'create'])->name('user.profile.create');
     Route::post('/store', [UserprofileController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [UserprofileController::class, 'edit'])->name('edit');
     Route::post('/update', [UserprofileController::class, 'update'])->name('update');
-    Route::post('/destroy/{id}', [UserprofileController::class, 'destroy'])->name('destroy');
+    Route::delete('/destroy/{id}', [UserprofileController::class, 'destroy'])->name('destroy');
+    Route::get('/download-cv', [UserprofileController::class, 'download'])->name('cv.download');
+
 });
   //Admin Role Routes
   Route::group(['middleware' => ['role:admin']], function () {
