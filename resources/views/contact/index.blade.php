@@ -60,11 +60,12 @@
                                 <h4 class="section-title">You know, Contact Form</h4>
                             </div>
 
-                            <form action="#" method="post" class="custom-form contact-form" role="form">
+                            <form action="{{ route('contact-us.send') }}" method="post">
+                                @csrf
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="form-floating">
-                                            <input type="text" name="full-name" id="full-name" class="form-control" placeholder="Full Name" required="">
+                                            <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Full Name" required="">
                                             
                                             <label for="floatingInput">Full Name</label>
                                         </div>

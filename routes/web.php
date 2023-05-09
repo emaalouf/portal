@@ -10,6 +10,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\savedJobController;
 use App\Http\Controllers\UserprofileController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\CVController;
 use Illuminate\Support\Facades\Route;
 
@@ -98,3 +99,6 @@ Route::view('about', 'layouts.about');
 Route::view('contact', 'contact.index');
 Route::view('CVTemplates', 'CVTemplate.index');
 Route::post('/save', [CVController::class, 'save'])->name('save_template');
+Route::get('contact-us', [ContactUsController::class, 'show'])->name('contact-us.show');
+Route::post('contact-us', [ContactUsController::class, 'send'])->name('contact-us.send');
+

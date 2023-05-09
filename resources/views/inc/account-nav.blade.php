@@ -12,6 +12,11 @@
         <i class="fas fa-users"></i> View All Users
       </a>
     </li>
+    <li class="list-group-item list-group-item-action {{ request()->segment(2) == 'view-all-users' ? 'active': ''}}">
+      <a href="{{route('account.viewAllUsers')}}" class="account-nav-link">
+        <i class="fas fa-users"></i> View Contact Us
+      </a>
+    </li>
     @endrole
     @role('author')
     <li class="list-group-item list-group-item-action {{ request()->segment(2) == 'author-section' ? 'active': ''}}">
