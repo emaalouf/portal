@@ -10,6 +10,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\savedJobController;
 use App\Http\Controllers\UserprofileController;
+use App\Http\Controllers\CVController;
 use Illuminate\Support\Facades\Route;
 
 //public routes
@@ -96,3 +97,4 @@ Route::prefix('cv')->group(function () {
 Route::view('about', 'layouts.about');
 Route::view('contact', 'contact.index');
 Route::view('CVTemplates', 'CVTemplate.index');
+Route::post('/save', [CVController::class, 'save'])->name('save_template');

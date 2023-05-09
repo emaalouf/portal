@@ -16,28 +16,31 @@ class JobController extends Controller
     }
 
     //api route
-    public function search(Request $request)
-    {
-        if ($request->q) {
-            $posts = Post::where('job_title', 'LIKE', '%' . $request->q . '%');
-        } elseif ($request->category_id) {
-            $posts = Post::whereHas('company', function ($query) use ($request) {
-                return $query->where('company_category_id', $request->category_id);
-            });
-        } elseif ($request->job_level) {
-            $posts = Post::where('job_level', 'Like', '%' . $request->job_level . '%');
-        } elseif ($request->education_level) {
-            $posts = Post::where('education_level', 'Like', '%' . $request->education_level . '%');
-        } elseif ($request->employment_type) {
-            $posts = Post::where('employment_type', 'Like', '%' . $request->employment_type . '%');
-        } else {
-            $posts = Post::take(30);
-        }
-
-        $posts = $posts->has('company')->with('company')->paginate(6);
-
-        return $posts->toJson();
+   public function search(Request $request)
+{
+    if ($request->q) {
+        $posts = Post::where('job_title', 'LIKE', '%' . $request->q . '%');
+    } elseif ($request->category_id) {
+        $posts = Post::whereHas('company', function ($query) use ($request) {
+            return $query->where('company_category_id', $request->category_id);
+        });
+    } elseif ($request->job_level) {
+        $posts = Post::where('job_level', 'Like', '%' . $request->job_level . '%');
+    } elseif ($request->education_level) {
+        $posts = Post::where('education_level', 'Like', '%' . $request->education_level . '%');
+    } elseif ($request->employment_type) {
+        $posts = Post::where('employment_type', 'Like', '%' . $request->employment_type . '%');
+    } elseif ($request->skill) {
+        $posts = Post::where('required_skill', 'LIKE', '%' . $request->skill . '%');
+    } else {
+        $posts = Post::take(30);
     }
+
+    $posts = $posts->has('company')->with('company')->paginate(6);
+
+    return $posts->toJson();
+}
+
     public function getCategories()
     {
         $categories = CompanyCategory::all();
