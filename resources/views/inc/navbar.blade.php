@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>CJ Resume - About Page</title>
+    <title>CJ Resume</title>
     <!-- CSS FILES -->        
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,7 @@
                             <a class="nav-link" href="/about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/register">CV Template</a>
+                            <a class="nav-link" href="/CVTemplates">CV Template</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/contact">Contact</a>
@@ -64,5 +64,4 @@
             </div>
         </div>
     </nav>
-</main>
-</body>
+
