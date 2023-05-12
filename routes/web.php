@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('/welcome');
 });
+
+Route::get('forgot-password', [AccountController::class, 'forgotPasswordView'])->name('forgot-password');
+Route::post('forgot-password', [AccountController::class, 'forgotPassword'])->name('forgot-password');
 // Route::get('/', [PostController::class, 'index'])->name('post.index');
 Route::get('/job/{job}', [PostController::class, 'show'])->name('post.show');
 Route::get('employer/{employer}', [AuthorController::class, 'employer'])->name('account.employer');
@@ -25,6 +28,8 @@ Route::view('/forgot', 'auth.forgot-password')->name('forgot');
 Route::view('/welcome', 'welcome')->name('welcome');
 //return vue page
 Route::get('/search', [JobController::class, 'index'])->name('job.index');
+
+
 
 //auth routes
 Route::middleware('auth')->prefix('account')->group(function () {
@@ -43,7 +48,7 @@ Route::middleware('auth')->prefix('account')->group(function () {
   Route::get('apply-job', [AccountController::class, 'applyJobView'])->name('account.applyJob');
   Route::post('apply-job', [AccountController::class, 'applyJob'])->name('account.applyJob');
 Route::prefix('cv')->group(function () {
-    Route::get('/', [UserprofileController::class, 'index'])->name('index');
+    Route::get('/', [UserprofileController::class, 'index'])->name('cv.index');
     Route::get('/user/{id}', [UserprofileController::class, 'view'])->name('user.profile.view');
     Route::get('/create', [UserprofileController::class, 'create'])->name('user.profile.create');
     Route::post('/store', [UserprofileController::class, 'store'])->name('store');
@@ -98,7 +103,7 @@ Route::prefix('cv')->group(function () {
 Route::view('about', 'layouts.about');
 Route::view('contact', 'contact.index');
 Route::view('CVTemplates', 'CVTemplate.index');
-Route::post('/save', [CVController::class, 'save'])->name('save_template');
+Route::get('/save', [CVController::class, 'save'])->name('save_template');
 Route::get('contact-us', [ContactUsController::class, 'show'])->name('contact-us.show');
 Route::post('contact-us', [ContactUsController::class, 'send'])->name('contact-us.send');
 

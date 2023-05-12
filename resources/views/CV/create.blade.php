@@ -190,15 +190,20 @@
                                                                         class="form-control" />
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-6 col-12">
-                                                                <div class="form-outline">
-                                                                    <label
-                                                                        class="form-label fw-bold text-secondary">End
-                                                                        Date</label>
-                                                                    <input type="date" id="edu_end_date"
-                                                                        name="edu_end_date[]" class="form-control" />
-                                                                </div>
-                                                            </div>
+
+<div class="col-sm-6 col-12">
+    <div class="form-outline">
+        <label class="form-label fw-bold text-secondary">End Date</label>
+        <input type="date" id="edu_end_date" name="edu_end_date[]" class="form-control" 
+            {{ old('present') ? 'disabled' : '' }} />
+    </div>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" id="present" name="present">
+    <label class="form-check-label" for="present">Present</label>
+</div>
+
+
                                                         </div>
                                                         <div class="form-outline mb-4">
                                                             <label class="form-label fw-bold text-secondary">Degree
@@ -251,15 +256,19 @@
                                                                         class="form-control" />
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-6 col-12">
-                                                                <div class="form-outline">
-                                                                    <label
-                                                                        class="form-label fw-bold text-secondary">End
-                                                                        Date</label>
-                                                                    <input type="date" id="job_end_date"
-                                                                        name="job_end_date[]" class="form-control" />
-                                                                </div>
-                                                            </div>
+                                                           
+<div class="col-sm-6 col-12">
+    <div class="form-outline">
+        <label class="form-label fw-bold text-secondary">End Date</label>
+        <input type="date" id="edu_end_date" name="edu_end_date[]" class="form-control" 
+            {{ old('present') ? 'disabled' : '' }} />
+    </div>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" id="present" name="present">
+    <label class="form-check-label" for="present">Present</label>
+</div>
+
                                                         </div>
                                                         <div class="form-outline mb-4">
                                                             <label class="form-label fw-bold text-secondary">Job

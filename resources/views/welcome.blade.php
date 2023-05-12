@@ -1,5 +1,30 @@
 @include('inc.navbar')
 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>CJ Resume</title>
+
+        <!-- CSSFILES  -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+                        
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="css/bootstrap-icons.css">
+
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+        <link href="css/templatemo-pod-talk.css" rel="stylesheet">
+        
             
 
             <section class="hero-section">
@@ -16,9 +41,11 @@
                                 </div> 
                             </div>
 
+                            
+
                             <div class="owl-carousel owl-theme">
                                 <div class="owl-carousel-info-wrap item">
-                                    <img src="images/profile/1.jpg" class="owl-carousel-image img-fluid" alt="">
+                                    <img src="{{ asset('images/profile/1.jpg') }}" class="owl-carousel-image img-fluid" alt="">
 
                                     <div class="owl-carousel-info">
                                         <h4 class="mb-2">
@@ -31,7 +58,7 @@
                                 </div>
 
                                 <div class="owl-carousel-info-wrap item">
-                                    <img src="images/profile/2.jpg" class="owl-carousel-image img-fluid" alt="">
+                                    <img src="{{ asset('images/profile/2.jpg') }}" class="owl-carousel-image img-fluid" alt="">
 
                                     <div class="owl-carousel-info">
                                         <h4 class="mb-2">
@@ -45,7 +72,7 @@
                                 </div> 
 
                                 <div class="owl-carousel-info-wrap item">
-                                    <img src="images/profile/3.jpg" class="owl-carousel-image img-fluid" alt="">
+                                    <img src="{{ asset('images/profile/3.jpg') }}" class="owl-carousel-image img-fluid" alt="">
 
                                     <div class="owl-carousel-info">
                                         <h4 class="mb-2"></h4>
@@ -57,7 +84,7 @@
                                 </div>
 
                                 <div class="owl-carousel-info-wrap item">
-                                    <img src="images/profile/4.jpg" class="owl-carousel-image img-fluid" alt="">
+                                    <img src="{{ asset('images/profile/4.jpg') }}" class="owl-carousel-image img-fluid" alt="">
 
                                     <div class="owl-carousel-info">
                                         <h4 class="mb-2"></h4>
@@ -94,14 +121,14 @@
                         <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                             <div class="custom-block custom-block-full">
                                 <div class="custom-block-image-wrap">
-                                    <a href="detaill.html">
+                                    <a href="/CVTemplate">
                                         <img src="images/logo.PNG" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
 
                                 <div class="custom-block-info">
                                     <h5 class="mb-2">
-                                        <a href="detaill.html">
+                                        <a href="/CVTemplate">
                                          Zaher
                                         </a>
                                     </h5>
@@ -133,14 +160,14 @@
                         <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                             <div class="custom-block custom-block-full">
                                 <div class="custom-block-image-wrap">
-                                    <a href="detaill.html">
+                                    <a href="/CVTemplate">
                                         <img src="images/profile/prooooo.png" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
 
                                 <div class="custom-block-info">
                                     <h5 class="mb-2">
-                                        <a href="detaill.html">
+                                        <a href="/CVTemplate">
                                         Antonella  </a>
                                     </h5>
 
@@ -174,14 +201,14 @@
                         <div class="col-lg-4 col-12">
                             <div class="custom-block custom-block-full">
                                 <div class="custom-block-image-wrap">
-                                    <a href="detaill.html">
+                                    <a href="/CVTemplate">
                                         <img src="images/logo.PNG" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
 
                                 <div class="custom-block-info">
                                     <h5 class="mb-2">
-                                        <a href="detaill.html">
+                                        <a href="/CVTemplate">
                                           Joseph 
                                         </a>
                                     </h5>
@@ -218,6 +245,12 @@
 
        @include('inc.footer')
 
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
 
     </body>
 </html>

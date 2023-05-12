@@ -1,6 +1,5 @@
 @extends('layouts.auth')
 
-
 <div class="container my-4">
     <div class="row justify-content-center">
         <div class="col-sm-12 col-md-6 px-0">
@@ -11,40 +10,36 @@
                     <p class="text-muted">Enter your email to receive an email to reset your password</p>
                 </div>
                 <div class="login-form">
-                    <form action="{{route('forgot')}}" method="POST">
+                    <form action="{{ route('forgot-password') }}" method="POST">
                         @csrf
+
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
                                 </div>
-                            <input id="email" type="email" placeholder="E-mail address" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                                <input id="email" type="email" placeholder="E-mail address" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
-                        </div>
-                 
-             
-                        <button type="submit" class="btn primary-btn btn-block">Login</button>
+                        <button type="submit" class="btn primary-btn btn-block">Reset Password</button>
                     </form>
-
                 </div>
             </div>
         </div>
-  
     </div>
 </div>
-
 
 @push('css')
 <style>
 .login-poster {
-   background-image: url('{{asset("images/login-bg.jpg")}}');
+    background-image: url('{{asset("images/login-bg.jpg")}}');
     background-image: linear-gradient(
             to bottom,
             rgba(0, 0, 0, 0.5),

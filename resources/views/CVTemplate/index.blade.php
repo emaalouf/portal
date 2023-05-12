@@ -25,76 +25,77 @@
         </div>
     </header>
 
-    {{-- <form action="{{ route('save_template') }}" method="post"> --}}
-        @csrf
+    <form>
     
         <section class="latest-podcast-section section-padding" id="section_2">
 
             <div class="row justify-content-center">
 
-                 <form action="{{ route('save_template') }}" method="post">
-    @csrf
+                <div class="col-lg-6 col-12">
+                    <div class="custom-block d-flex">
+                        <div class="">
+                            <div class="custom-block-icon-wrap">
 
-    <section class="latest-podcast-section section-padding" id="section_2">
+                                <a href="{{ route('save_template', ['template' => 1]) }}">
+                                    <img src="images/profile/1.jpg" alt="profile_pic">
+                                </a>
+                                
 
-        <div class="row justify-content-center">
-
-            <div class="col-lg-6 col-12 mb-4 mb-lg-0">
-                <div class="custom-block d-flex">
-                    <div class="">
-                        <div class="custom-block-icon-wrap">
-
-                            <input type="checkbox" id="template1" name="template" value="1" onchange="handleCheckboxChange('template1', 'template2')" required>
-                            <img src="images/profile/1.jpg" alt="profile_pic">
-
+                            </div>
                         </div>
 
                     </div>
-
                 </div>
-            </div>
 
+                <div class="col-lg-6 col-12">
+                    <div class="custom-block d-flex">
+                        <div class="">
+                            <div class="custom-block-icon-wrap">
 
-            <div class="col-lg-6 col-12 mb-4 mb-lg-0">
-                <div class="custom-block d-flex">
-                    <div class="">
-                        <div class="custom-block-icon-wrap">
+                                <a href="{{ route('save_template', ['template' => 2]) }}">
+                                    <img src="images/profile/2.jpg" alt="profile_pic">
+                                </a>
+                                
 
-                            <input type="checkbox" id="template2" name="template" value="2" onchange="handleCheckboxChange('template2', 'template1')" required>
-                            <img src="images/profile/2.jpg" alt="profile_pic">
-
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="custom-block d-flex">
+                        <div class="">
+                            <div class="custom-block-icon-wrap">
+                                <a href="{{ route('save_template', ['template' => 3]) }}">
+                                    <img src="images/resume-6.webp" alt="profile_pic">
+                                </a>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="custom-block d-flex">
+                        <div class="">
+                            <div class="custom-block-icon-wrap">
+                                <a href="{{ route('save_template', ['template' => 4]) }}">
+                                    <img src="images/resume-9.webp" alt="profile_pic">
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-        </div>
-
-        <div class="text-center" style="padding:10px;">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-
-        <p style="color:red; text-align:center;">Please select a template before submitting the form.</p>
-
-    </section>
-</form>
-
+        </section>
+    </form>
 
 </main>
 
 @include('inc.newfooter')
-
-<script>
-    function handleCheckboxChange(currentCheckboxId, otherCheckboxId) {
-        const currentCheckbox = document.getElementById(currentCheckboxId);
-        const otherCheckbox = document.getElementById(otherCheckboxId);
-        if (currentCheckbox.checked) {
-            otherCheckbox.disabled = true;
-        } else {
-            otherCheckbox.disabled = false;
-        }
-    }
-</script>
 
 </body>
 </html>

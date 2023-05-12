@@ -1,9 +1,10 @@
+@include('inc.navbar')
 @extends('layouts.account')
 
 @section('content')
   <div class="account-layout  border">
     <div class="account-hdr bg-primary text-white border">
-      Viewing all users <span class="badge badge-primary">Any Role</span>
+      Viewing Contact Us items
     </div>
     <div class="account-bdy p-3">
       <div class="row">

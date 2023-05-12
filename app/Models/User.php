@@ -8,7 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\ContactInformation;
-
+use App\Models\PersonalInformation;
+use App\Models\Skills;
 
 class User extends Authenticatable
 {
@@ -62,6 +63,16 @@ class User extends Authenticatable
     public function contactInformation()
     {
         return $this->hasOne('App\Models\ContactInformation');
+    }
+
+    public function personalInformation()
+    {
+        return $this->hasOne('App\Models\PersonalInformation');
+    }
+
+    public function skills()
+    {
+        return $this->hasMany('App\Models\Skills');
     }
 
 }

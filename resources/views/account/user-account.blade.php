@@ -1,24 +1,38 @@
-@extends('layouts.app')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>CJ Resume</title>
-    <!-- CSS FILES -->        
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap" rel="stylesheet">        
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
-    <link href="{{ asset('css/templatemo-pod-talk.css') }}" rel="stylesheet">
-    
-</head>
-<body>
+
+@include('inc.navbar')
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>CJ Resume</title>
+
+        <!-- CSSFILES  -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+                        
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="css/bootstrap-icons.css">
+
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+        <link href="css/templatemo-pod-talk.css" rel="stylesheet">
+        
+            
+
+            <section class="hero-section">
+                <div class="container">
+                    <div class="row">
+
+                       <body>
 <div style="display: flex; flex-direction: column; align-items: center;">
 
     <main>
@@ -76,6 +90,13 @@
   <div class="account-hdr bg-primary text-white border ">
     User Account
   </div>
+  <style>
+    .account-hdr {
+  text-align: center;
+  margin: auto;
+}
+</style>
+
   <div class="account-bdy border py-3">
     <div class="row container d-flex justify-content-center">
         <div class="col-xl-12 col-md-12">
@@ -86,10 +107,11 @@
                             <div class="m-b-25"> <img src="{{asset('images/user-profile.png')}}" class="img-radius" alt="User-Profile-Image"> </div>
                             <h6 class="f-w-600">{{auth()->user()->name}}</h6>
                             @role('user')
-                            <p>User</p> 
+                            <p style="color:#000">User</p> 
                             @endrole
                             @role('admin')
-                            <p>Author (Job Lister) <i class="fas fa-pen-square"></i></p> 
+                            <p style="color:#000">Author (Job Lister) <i class="fas fa-pen-square"></i></p> 
+                            <p style="color:#000"><a href="/account/dashboard">Take me to admin panel </a></p> 
                             @endrole
                         </div>
                     </div>
@@ -119,6 +141,12 @@
                                     <a href="/search" class="btn primary-outline-btn">Job Portal</a>
                                 </div>
                             </div>
+                             <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Take me to job portal</p>
+                                    <a href="/search" class="btn primary-outline-btn">Job Portal</a>
+                                </div>
+                            </div>
                             <ul class="social-link list-unstyled m-t-40 m-b-10">
                                 <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
                                 <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
@@ -133,98 +161,20 @@
   </div>
 </div>
 </div>
+                       
+                    </div>
+                   
+                </div>
+                
+            </section>
+
+     
+           
+        </main>
+
+
+
 @include('inc.footer')
 
-
-@push('css')
-<style>
-.user-card-full {
-    overflow: hidden;
-}
-.card {
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-    border: none;
-    margin-bottom: 30px
-}
-.m-r-0 {
-    margin-right: 0px
-}
-.m-l-0 {
-    margin-left: 0px
-}
-.user-card-full .user-profile {
-    border-radius: 5px 0 0 5px
-}
-.bg-c-lite-green {
-    background: linear-gradient(to right, #185A91, #3498DA)
-}
-.user-profile {
-    padding: 20px 0
-}
-.card-block {
-    padding: 1.25rem
-}
-.m-b-25 {
-    margin-bottom: 25px
-}
-.img-radius {
-    border-radius: 5px
-}
-h6 {
-    font-size: 14px
-}
-.card .card-block p {
-    line-height: 25px
-}
-
-@media only screen and (min-width: 1400px) {
-    p {
-        font-size: 14px
-    }
-}
-.card-block {
-    padding: 1.25rem
-}
-.b-b-default {
-    border-bottom: 1px solid #e0e0e0
-}
-.m-b-20 {
-    margin-bottom: 20px
-}
-.p-b-5 {
-    padding-bottom: 5px !important
-}
-.card .card-block p {
-    line-height: 25px
-}
-.m-b-10 {
-    margin-bottom: 10px
-}
-.text-muted {
-    color: #919aa3 !important
-}
-.b-b-default {
-    border-bottom: 1px solid #e0e0e0
-}
-.f-w-600 {
-    font-weight: 600
-}
-.m-b-20 {
-    margin-bottom: 20px
-}
-.m-t-40 {
-    margin-top: 20px
-}
-.p-b-5 {
-    padding-bottom: 5px !important
-}
-.m-b-10 {
-    margin-bottom: 10px
-}
-.m-t-40 {
-    margin-top: 20px
-}
-</style>
-@endpush
+    </body>
+</html>

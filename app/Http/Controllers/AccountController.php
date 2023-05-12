@@ -50,6 +50,32 @@ class AccountController extends Controller
         return view('account.apply-job', compact('post', 'company'));
     }
 
+    public function forgotPasswordView()
+        {
+            return view('auth.forgot-password');
+        }
+
+        public function forgotPassword(Request $request)
+        {
+            $request->validate([
+                'email' => 'required|email|exists:users,email',
+            ]);
+
+            $email = $request->email;
+            $token = Str::random(60);
+            DB::table('password_resets')->insert([
+                'email' => $email,
+                'token' => $token,
+                'created_at' => Carbon::now()
+            ]);
+
+            Mail::to($email)->send(new ResetPasswordMail($token));
+
+            Alert::toast('Password reset link has been sent to your email!', 'success');
+            return redirect()->route('login');
+        }
+
+
     public function applyJob(Request $request)
     {
         $application = new JobApplication;

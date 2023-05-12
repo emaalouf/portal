@@ -20,8 +20,8 @@
             <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                 <h3 class="footer-heading">Products</h3>
                 <ul class="list-unstyled">
-                    <li><a href="/register">Create CV</a></li>
-                    <li><a href="/register">CV Templates</a></li>
+                    <li><a href="/account/cv/create">Create CV</a></li>
+                    <li><a href="/CVTemplates">CV Templates</a></li>
                 </ul>
             </div>
 

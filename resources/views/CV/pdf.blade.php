@@ -88,17 +88,22 @@
     </style>
 </head>
 <body>
-    <h1>{{ $personal_information['first_name'] }} {{ $personal_information['last_name'] }}</h1>
-    <p>{{ $personal_information['profile_title'] }}</p>
-
+    @foreach($personal_information as $personal_information)
+    <h1>Name:{{ $personal_information['first_name'] }} {{ $personal_information['last_name'] }}</h1>
+    <p>Profile Title:{{ $personal_information['profile_title'] }}</p>
+    @endforeach
     <div class="contact-info section">
         <h2>Contact Information</h2>
         <div class="section-content">
             <ul>
-                <li>{{ $contact_information['address'] }}</li>
-                <li>{{ $contact_information['phone'] }}</li>
-                <li>{{ $contact_information['email'] }}</li>
-                <li>{{ $contact_information['website'] }}</li>
+                @foreach($contact_information as $contact_information)
+                <li>Email: {{ $contact_information['email'] }}</li>
+                <li>Phone Number: {{ $contact_information['phone_number'] }}</li>
+                <li>Website: {{ $contact_information['website'] }}</li>
+                <li>LinkedIn: {{ $contact_information['linkedin_link'] }}</li>
+                <li>Github{{ $contact_information['github_link'] }}</li>
+                <li>Twitter{{ $contact_information['twitter'] }}</li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -107,10 +112,13 @@
         <h2>Education</h2>
         <div class="section-content">
             @foreach($education as $edu)
-                <h3>{{ $edu['degree'] }}, {{ $edu['major'] }}</h3>
-                <p>{{ $edu['school'] }}, {{ $edu['location'] }}</p>
-                <p>{{ $edu['start_date'] }} - {{ $edu['end_date'] }}</p>
-            @endforeach
+                <h3>ID:{{ $edu['user_id']}}</h3>
+                <h3>Degree Title:{{ $edu['degree_title']}}</h3>
+                <h3>Institute:{{ $edu['institute']}}</h3>
+                <h3>Education Start Date:{{ $edu['edu_start_date']}}</h3>
+                <h3>Education End Date:{{ $edu['edu_end_date']}}</h3>
+                <h3>Description:{{ $edu['education_description']}}</h3>
+                @endforeach
         </div>
     </div>
 
@@ -118,11 +126,10 @@
         <h2>Experience</h2>
         <div class="section-content">
             @foreach($experience as $exp)
-                <h3>{{ $exp['job_title'] }}</h3>
-                <p>{{ $exp['employer'] }}, {{ $exp['location'] }}</p>
-                <p>{{ $exp['start_date'] }} - {{ $exp['end_date'] }}</p>
-               
-<p>{{ $exp['description'] }}</p>
+                <h3>Job Title:{{ $exp['job_title'] }}</h3>
+                <p>Organization{{ $exp['organization'] }}</p>
+                <p>Start: {{ $exp['job_start_date'] }} - End: {{ $exp['job_end_date'] }}</p>
+                <p>Description:{{ $exp['job_description'] }}</p>
             @endforeach
         </div>
     </div>
@@ -131,7 +138,8 @@
     <div class="section-content">
         <ul>
             @foreach($skills as $skill)
-                <li>{{ $skill['skill'] }}</li>
+                <li>{{ $skill['skill_name'] }}</li>
+                <li>{{ $skill['skill_percentage'] }}</li>
             @endforeach
         </ul>
     </div>
@@ -142,7 +150,7 @@
     <div class="section-content">
         <ul>
             @foreach($languages as $lang)
-                <li>{{ $lang['language'] }} ({{ $lang['proficiency'] }})</li>
+                <li>{{ $lang['language'] }} ({{ $lang['language_level'] }})</li>
             @endforeach
         </ul>
     </div>
@@ -152,9 +160,8 @@
     <h2>Projects</h2>
     <div class="section-content">
         @foreach($projects as $proj)
-            <h3>{{ $proj['title'] }}</h3>
-            <p>{{ $proj['description'] }}</p>
-            <p><em>{{ $proj['link'] }}</em></p>
+            <h3>{{ $proj['project_description'] }}</h3>
+            <p>{{ $proj['project_title'] }}</p>
         @endforeach
     </div>
 </div>

@@ -1,4 +1,5 @@
 @extends('layouts.account')
+@include('inc.navbar')
 
 @section('content')
   <div class="account-layout  border">
@@ -20,7 +21,7 @@
                 </tr>
               </thead>
               <tbody>
-                @if($users->count()) 
+              @if($users->count()) 
                 @foreach($users as $user)
                 <tr>
                   <td>{{$user->id}}</td>

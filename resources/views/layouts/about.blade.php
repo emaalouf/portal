@@ -11,6 +11,10 @@
             max-width: 600px;
             height: auto;
         }
+        p {
+            font-style: italic;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -36,10 +40,10 @@
                         </div>
                        <div class="d-flex">
                             <div class="col about-text">
-                                <p>The most widely used and known CV is the chronological CV. This means that, for example your studies or your work experiences, will be represented following an inverse chronological structure: The last job you have had (the most recent) is mentioned at the beginning (above), the first job you had is mentioned in the bottom. To carry out this process in an optimal and fast way, we have developed a generator with which you can reorder all the content as required.</p>
-                                <p>Mention only relevant information that has added value for the vacancy you are applying for and that is interesting to your future employer.</p>
-                                <p>Indicate the most important information on the first page. Add a concise personal profile about yourself.</p>
-                                <p>Use enumeration points, bullets, and hyphens to make your CV transparent to recruiting staff.</p>
+                                <p><em><strong>The most widely used and known CV is the chronological CV.</strong></em> This means that, for example your studies or your work experiences, will be represented following an inverse chronological structure: The last job you have had (the most recent) is mentioned at the beginning (above), the first job you had is mentioned in the bottom. To carry out this process in an optimal and fast way, we have developed a generator with which you can reorder all the content as required.</p>
+                                <p><em><strong>Mention only relevant information that has added value for the vacancy you are applying for and that is interesting to your future employer.</strong></em></p>
+                                <p><em><strong>Indicate the most important information on the first page. Add a concise personal profile about yourself.</strong></em></p>
+                                <p><em><strong>Use enumeration points, bullets, and hyphens to make your CV transparent to recruiting staff.</strong></em></p>
                             </div>
                             <div class="col about-image d-flex justify-content-center align-items-center">
                                 <img src="{{ asset('images/profile/2.jpg') }}" class="mt-5 img-fluid larger-image" alt="">
