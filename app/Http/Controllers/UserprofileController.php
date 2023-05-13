@@ -76,7 +76,37 @@ public function download()
     // and return the session data
     if ($template == 1) {
  return $pdf->download('pdf.CV');
-        return redirect()->route('cv.index');
+    }
+
+  if ($template == 2) {
+ return $pdf->download('pdf1.CV');
+  }
+
+  if ($template == 3) {
+ return $pdf->download('pdf2.CV');
+  }
+
+  if ($template == 4) {
+ return $pdf->download('pdf3.CV');
+  }
+
+  if ($template == 5) {
+ return $pdf->download('pdf4.CV');
+  }
+
+  if ($template == 6) {
+ return $pdf->download('pdf5.CV');
+  }
+
+  if ($template == 7) {
+ return $pdf->download('pdf6.CV');
+  }
+
+  if ($template == 8) {
+ return $pdf->download('pdf7.CV');
+  
+
+    return redirect()->route('cv.index');
           
     }
 
