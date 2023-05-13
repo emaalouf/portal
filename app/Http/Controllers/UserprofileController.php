@@ -69,9 +69,27 @@ public function download()
         'skills'
     ));
 
-    // Download the PDF
-    return $pdf->download('CV.pdf');
+    // Get the template from the session
+    $template = session()->get('template');
+
+    // If the template is 1, redirect back to the CV index
+    // and return the session data
+    if ($template == 1) {
+ return $pdf->download('pdf.CV');
+        return redirect()->route('cv.index');
+          
+    }
+
+    // If the template is 2, download the PDF with a different filename
+    if ($template == 2) {
+        return $pdf->download('pdf1.CV');
+        return redirect()->route('cv.index');
+    }
+
+    // If the template is not 1 or 2, download the PDF with the default filename
+ 
 }
+
 
 
 

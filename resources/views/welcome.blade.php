@@ -160,14 +160,14 @@
                         <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                             <div class="custom-block custom-block-full">
                                 <div class="custom-block-image-wrap">
-                                    <a href="/CVTemplate">
+                                    <a href="/CVTemplates">
                                         <img src="images/profile/prooooo.png" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
 
                                 <div class="custom-block-info">
                                     <h5 class="mb-2">
-                                        <a href="/CVTemplate">
+                                        <a href="/CVTemplates">
                                         Antonella  </a>
                                     </h5>
 
@@ -208,7 +208,7 @@
 
                                 <div class="custom-block-info">
                                     <h5 class="mb-2">
-                                        <a href="/CVTemplate">
+                                        <a href="/CVTemplates">
                                           Joseph 
                                         </a>
                                     </h5>

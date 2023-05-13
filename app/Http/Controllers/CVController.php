@@ -22,9 +22,11 @@ class CVController extends Controller
             session(['template' => $template]);
 
             $session_data = session()->all(); // Save session data in a variable
+            $template = $request->session()->get('template');
 
+                 return redirect()->route('cv.index')->with('session_data', $session_data);
 
-            return redirect()->route('cv.index')->with('session_data', $session_data);
+            }
         }
 
-}
+

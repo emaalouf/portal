@@ -143,8 +143,8 @@
                             </div>
                              <div class="row">
                                 <div class="col-sm-6">
-                                    <p class="m-b-10 f-w-600">Take me to job portal</p>
-                                    <a href="/search" class="btn primary-outline-btn">Job Portal</a>
+                                    <p class="m-b-10 f-w-600">Take me to CV Creator</p>
+                                    <a href="/account/cv" class="btn primary-outline-btn">CV Creator</a>
                                 </div>
                             </div>
                             <ul class="social-link list-unstyled m-t-40 m-b-10">
