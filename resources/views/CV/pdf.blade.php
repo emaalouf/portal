@@ -1,210 +1,4 @@
-{{-- <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>CV</title>
-  <style>
-        body {
-            font-size: 16px;
-            line-height: 1.5;
-            background-color: #f2f2f2;
-            padding: 20px;
-            margin: 0;
-        }
 
-            h1 {
-        font-size: 36px;
-        font-weight: bold;
-        margin: 0 0 10px;
-        color: #333;
-    }
-
-    h2 {
-        font-size: 24px;
-        font-weight: bold;
-        margin: 20px 0 10px;
-        color: #333;
-    }
-
-    h3 {
-        font-size: 18px;
-        font-weight: bold;
-        margin: 20px 0 10px;
-        color: #333;
-    }
-
-    p {
-        margin: 0 0 10px;
-        color: #333;
-    }
-
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    li {
-        margin: 5px 0;
-    }
-
-    .section {
-        margin: 50px 0;
-    }
-
-    .section h2 {
-        margin: 0;
-    }
-
-    .section-content {
-        margin-left: 20px;
-    }
-
-    .section ul {
-        margin-left: 20px;
-    }
-
-    .section li {
-        margin-left: 20px;
-    }
-
-    .section h3 {
-        margin: 0 0 10px;
-    }
-
-    .section p {
-        margin-left: 20px;
-    }
-
-    .contact-info {
-        margin-top: 50px;
-    }
-
-    .contact-info p {
-        margin: 0;
-    }
-
-    .contact-info ul {
-        margin-left: 20px;
-    }
-
-    .contact-info li {
-        margin: 5px 0;
-    }
-
-    .education h3,
-    .experience h3,
-    .skills li {
-        color: #333;
-    }
-
-    .languages li,
-    .interests li {
-        color: #666;
-    }
-
-    .projects h3,
-    .projects p {
-        color: #333;
-    }
-</style>
-
-</head>
-<body>
-    @foreach($personal_information as $personal_information)
-    <h1>Name:{{ $personal_information['first_name'] }} {{ $personal_information['last_name'] }}</h1>
-    <p>Profile Title:{{ $personal_information['profile_title'] }}</p>
-    @endforeach
-    <div class="contact-info section">
-        <h2>Contact Information</h2>
-        <div class="section-content">
-            <ul>
-                @foreach($contact_information as $contact_information)
-                <li>Email: {{ $contact_information['email'] }}</li>
-                <li>Phone Number: {{ $contact_information['phone_number'] }}</li>
-                <li>Website: {{ $contact_information['website'] }}</li>
-                <li>LinkedIn: {{ $contact_information['linkedin_link'] }}</li>
-                <li>Github{{ $contact_information['github_link'] }}</li>
-                <li>Twitter{{ $contact_information['twitter'] }}</li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-
-    <div class="education section">
-        <h2>Education</h2>
-        <div class="section-content">
-            @foreach($education as $edu)
-                <h3>ID:{{ $edu['user_id']}}</h3>
-                <h3>Degree Title:{{ $edu['degree_title']}}</h3>
-                <h3>Institute:{{ $edu['institute']}}</h3>
-                <h3>Education Start Date:{{ $edu['edu_start_date']}}</h3>
-                <h3>Education End Date:{{ $edu['edu_end_date']}}</h3>
-                <h3>Description:{{ $edu['education_description']}}</h3>
-                @endforeach
-        </div>
-    </div>
-
-    <div class="experience section">
-        <h2>Experience</h2>
-        <div class="section-content">
-            @foreach($experience as $exp)
-                <h3>Job Title:{{ $exp['job_title'] }}</h3>
-                <p>Organization{{ $exp['organization'] }}</p>
-                <p>Start: {{ $exp['job_start_date'] }} - End: {{ $exp['job_end_date'] }}</p>
-                <p>Description:{{ $exp['job_description'] }}</p>
-            @endforeach
-        </div>
-    </div>
-    <div class="skills section">
-    <h2>Skills</h2>
-    <div class="section-content">
-        <ul>
-            @foreach($skills as $skill)
-                <li>{{ $skill['skill_name'] }}</li>
-                <li>{{ $skill['skill_percentage'] }}</li>
-            @endforeach
-        </ul>
-    </div>
-</div>
-
-<div class="languages section">
-    <h2>Languages</h2>
-    <div class="section-content">
-        <ul>
-            @foreach($languages as $lang)
-                <li>{{ $lang['language'] }} ({{ $lang['language_level'] }})</li>
-            @endforeach
-        </ul>
-    </div>
-</div>
-
-<div class="projects section">
-    <h2>Projects</h2>
-    <div class="section-content">
-        @foreach($projects as $proj)
-            <h3>{{ $proj['project_description'] }}</h3>
-            <p>{{ $proj['project_title'] }}</p>
-        @endforeach
-    </div>
-</div>
-
-<div class="interests section">
-    <h2>Interests</h2>
-    <div class="section-content">
-        <ul>
-            @foreach($interests as $int)
-                <li>{{ $int['interest'] }}</li>
-            @endforeach
-        </ul>
-    </div>
-</div>
-
-</body>
-</html> --}}
-
-<!--  This is my personal modification of the Responsive CV temple made by Eric Traecy (https://codepen.io/erictreacy/pen/EbWmbY).
-Please feel free to use on your own.  -->
 <div id="drag" class="cv instaFade breakFastBurrito">
     <div class="mainDetails">
         <div id="headshot" class="quickFade">
@@ -216,11 +10,6 @@ Please feel free to use on your own.  -->
         <div id="name">
             Title: {{ ($personal_information['profile_title'] ?? '') }}
             About: {{ ($personal_information['about_me'] ?? '') }}
-            <div class="bioDetails">
-                <div style="float: left">{{ ($personal_information['date_of_birth'] ?? '') }}</div>
-                <div style="float: right">Citizenship: {{ ($personal_information['citizenship'] ?? '') }}</div>
-                <div style="margin: 0 auto; width: 100px;">{{ ($personal_information['degree'] ?? '') }}</div>
-            </div>
         </div>
         <div class="clear"></div>
     </div>
@@ -260,12 +49,12 @@ Please feel free to use on your own.  -->
                             @endforeach
 							<div class="address">
 								<div class="item">
-									<div class="contactIcon"><i class="fa fa-envelope fa-fw fa-lg" aria-hidden="true"></i></div>
 									<div class="contactInfo">
-										Tenwek Hospital<br/>		
-										P.O. Box 39<br/>
-										Bomet, Kenya<br/>
-										East Africa
+										Projects
+                    @foreach($projects as $project)
+                    {{ $project['project_title'] }}
+                    {{ $project['project_description'] }}
+                    @endforeach
 									</div>
 								</div>
 							</div>
@@ -277,37 +66,30 @@ Please feel free to use on your own.  -->
 		</div>
 		
     <div id="mainArea" class="quickFade delayFive">
+        @foreach($interests as $interest)
       <section id="Profile">
+        <h1>Interests</h1>
         <article>
           <div class="sectionTitle">
-            <h1>Personal Profile</h1>
-          </div>
-
-          <div class="sectionContent">
-            <p>God began to called me to ministry as a while I was on a mission trip to Guatemal with my church. Since then I have pursued his call on my life serving the kingdom by leading ministries, preaching and teaching, pursuing further theological studies, working in support roles, and, as the church confirmed my call, becoming an ordained minister. I am convicted that real change of the heart does not happed through the power of human speech, but only through the power of the living Word coming into close contact with human hearts through reading, speaking, proclaiming, and teaching. </p>
+            <h1>{{$interest['interest']}}</h1>
           </div>
         </article>
         <div class="clear"></div>
       </section>
+      @endforeach
 
 			<section id="credentials">
         <div class="sectionTitle">
-          <h1>Ministerial Credentials</h1>
+          <h1>Skills:</h1>
         </div>
         <div class="sectionContent">
           <article>
-            <h2>Ordained to the Presbyterate</h2>
-						<h3>Diocese of the Rocky Mountains, Anglican Church of North America</h3>
-            <p class="subDetails">January 2018</p>
-            <p>Ordained by Kenneth Ross, Bishop of the Diocese of the Rocky Mountains. </p>
+            @foreach($skill as $skill)
+            <h2>{{$skill['skill_name']}}</h2>
+						<h3>{{$skill['skill_percentage']}}</h3>
+            @endforeach
           </article>
 
-          <article>
-            <h2>Ordained to the Diaconate</h2>
-						<h3>Diocese of the Rocky Mountains, Anglican Church of North America</h3>
-            <p class="subDetails">June 10, 2017</p>
-            <p>Ordained by James Hobby, Jr., Bishop of the Diocese of Pittsburgh, on behalf of  Kenneth Ross, Bishop of the Diocese of the Rocky Mountains.</p>
-          </article>
         </div>
         <div class="clear"></div>
       </section>
@@ -334,94 +116,36 @@ Please feel free to use on your own.  -->
           <h1>Work Experience</h1>
         </div>
 
+        @foreach($experience as $experience)
         <div class="sectionContent">
           <article>
-            <h2>Assisting Priest / Transitional Deacon</h2>
-            <h3>Saint Thomas Angllican Church, Pittsburgh, PA</h3>
-            <p class="subDetails">June 2018 - February 2018</p>
-            <p>Assisted in weekly worship, education, pastoral care, and website development.</p>
+            <h2>{{$experience['job_title']}}</h2>
+            <h3>{{$experience['organization']}}</h3>
+            <p class="subDetails">{{$experience['job_start_date']}} - {{$experience['job_end_date']}} </p>
+            <p>{{$experience['job_description']}}</p>
           </article>
-
-          <article>
-            <h2>Developer</h2>
-            <h3>English Language Institute China, Fort Collins, CO, U.S.A.</h3>
-            <p class="subDetails">January 2014 - December 2018</p>
-            <p>Developed Ruby on Rails web applications for employee use.</p>
-          </article>
-
-          <article>
-             <h2>Mobilization Data and Resource Manager</h2>
-            <h3>Englican Language Institute China, Fort Collins, CO, U.S.A.</h3>
-            <p class="subDetails">April 2011 - Aug. 2014</p>
-            <p>Was the database administrator and developer of a Salesforce CRM instance where I greatly increased usability and efficiency of the department. Supported the department in other administrative tasks as well. Was named the Employee of the Year in 2013 by my peers.</p>
-          </article>
-          
-           <article>
-            <h2>Young Adult Ministry Intern</h2>
-             <h3>Hope Chapel, Kiehi, HI, U.S.A.</h3>
-            <p class="subDetails">August 2009 - August 2010</p>
-            <p>Gained skills in community formation and outreach. Helped develop and empower a volunteer leadership team for the young adult community. Organized the majority of events for the year.</p>
-          </article>          
-          
-           <article>
-            <h2>Field Technician</h2>
-            <h3>All Phase Restoration, Windsor, CO, U.S.A.</h3>
-            <p class="subDetails">Summer 2007, September 2008 - July 2009</p>
-            <p>Worked to mitigate the effects of water and fire damage in commercial and residential units. Suggested and developed an electronic paperwork system resulting in increased efficiency.</p>
-          </article>          
+        @endforeach     
         </div>         
         <div class="clear"></div>
       </section>
 
-
-<!--       <section>
+      <section id="Languages">
         <div class="sectionTitle">
-          <h1>Key Skills</h1>
+          <h1>Languages</h1>
         </div>
 
+        @foreach($languages as $languages)
         <div class="sectionContent">
-          <ul class="keySkills">
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-          </ul>
-        </div>
+          <article>
+            <h2>{{$languages['language']}}</h2>
+            <h3>{{$languages['language_level']}}</h3>
+          </article>
+        
+        </div> 
+            @endforeach         
         <div class="clear"></div>
-      </section> -->
+      </section>
 
-
-
-
-      
-<!--       <section>
-        <article>
-          <div class="sectionTitle">
-            <h1>Publications</h1>
-          </div>
-
-          <div class="sectionContent">
-            <p> Jin, Lei, Mogan, Jennifer, et al. "STING/MPYS mediates host defense against listeria monocytogenes infection by regulating Ly6Chi monocyte migration." The Journal of Immunology 190.6 (2013): 2835-2843.</p> 
-          </div>
-          
-          <div class="sectionContent">
-            <p>Knowles, Heather, Mogan, Jennifer, et al. "Transient Receptor Potential Melastatin 2 (TRPM2) ion channel is required for innate immunity against Listeria monocytogenes." Proceedings of the National Academy of Sciences 108.28 (2011): 11578-11583.</p>
-          </div>
-          
-          <div class="sectionContent">
-            <p>Jin, Lei, Mogan, Jennifer, et al. "MPYS is required for IFN response factor 3 activation and type I IFN production in the response of cultured phagocytes to bacterial second messengers cyclic-di-AMP and cyclic-di-GMP." The Journal of Immunology 187.5 (2011): 2595-2601.</p>
-          </div>
-          
-        </article>
-        <div class="clear"></div>
-      </section> -->
-      
-      
-      
     </div>
 		</div>
   </div>

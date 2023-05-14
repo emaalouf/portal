@@ -56,9 +56,27 @@
       <div class="exprecince">{{$education['education_description']}}</div>
     </div>
   @endforeach
-</div>
+  </div>
+  
 
     </div>
+
+          <section id="Languages">
+        <div class="sectionTitle">
+          <h1>Languages</h1>
+        </div>
+
+        @foreach($languages as $languages)
+        <div class="sectionContent">
+          <article>
+            <h2>{{$languages['language']}}</h2>
+            <h3>{{$languages['language_level']}}</h3>
+          </article>
+        
+        </div> 
+            @endforeach         
+        <div class="clear"></div>
+      </section>
     <div class="cv-wrap">
       <div class="avatar">
         <img src="https://image-aws-us-west-2.vsco.co/04d5df/155672998/5ee7bf4f43a34b5b3c000002/720x960/vsco5ee7bf53b94de.jpg" alt="" />
@@ -73,27 +91,21 @@
         <div class="head-title">Primary Skills
         </div>
         <div class="cv-skills-item">
-          <div class="title">HTML</div>
-          <div class="title">CSS </div>
-          <div class="title">JAVASCRİPT</div>
-          <div class="title">PHP</div>
+          @foreach($skill as $skill)
+            <h2>{{$skill['skill_name']}}</h2>
+						<h3>{{$skill['skill_percentage']}}</h3>
+            @endforeach
         </div>
 
       </div>
       <div class="cv-skills">
-        <div class="head-title">Secondary Skills
+        <div class="head-title">Projects:
         </div>
         <div class="cv-skills-item">
-          <div class="title">jQuery</div>
-          <div class="title">AJAX</div>
-          <div class="title">Bower</div>
-          <div class="title">NPM</div>
-          <div class="title">Grunt/Gulp</div>
-          <div class="title">Git</div>
-          <div class="title">Bootstrap</div>
-          <div class="title">WordPress</div>
-          <div class="title">SharePoint</div>
-          <div class="title">PowerShell</div>
+          @foreach($projects as $project)
+                    {{ $project['project_title'] }}
+                    {{ $project['project_description'] }}
+                    @endforeach
         </div>
 
       </div>

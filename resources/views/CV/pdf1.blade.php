@@ -43,53 +43,25 @@
       </section>
 
 
-      <section>
-        <div class="sectionTitle">
-          <h1>Work Experience</h1>
-        </div>
+    <section>
+  <div class="sectionTitle">
+    <h1>Work Experience</h1>
+  </div>
 
-        <div class="sectionContent">
-          <article>
-            <h3>Registered Nurse | ICU</h3>
-            <h3>UP Health System - Marquette</h3>
-            <p class="subDetails">Feb. 2017 - Present</p>
-            <p>Operating Room | Surgical | Neuro/Ortho |  Medical/Oncology | Substance Abuse | Emergency Department | Family Birthing Unit/NICU |  Psychiatric | Home Health and Hospice | IMCU</p>
-          </article>
+  @foreach($work_experience as $job)
+  <div class="sectionContent">
+    <article>
+      <h3>{{$job['job_title']}} | {{$job['department']}}</h3>
+      <h3>{{$job['organization']}}</h3>
+      <p class="subDetails">{{$job['job_start_date']}} - {{$job['job_end_date']}}</p>
+      <p>{{$job['job_description']}}</p>
+    </article>
+  </div>
+  @endforeach
 
-          <article>
-            <h2>Student Nurse</h2>
-            <h3>Northern Michigan University (NMU)</h3>
-            <p class="subDetails">Jan. 2014 - Jan. 2017</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-          </article>
+  <div class="clear"></div>
+</section>
 
-          <article>
-             <h2>Laboratory Manager</h2>
-            <h3>Univerity of Colorado (CU)</h3>
-            <p class="subDetails">October 2004 - December 2006</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-          </article>
-          
-           <article>
-            <h2>Professional Research Associate</h2>
-             <h3>National Jewish Health</h3>
-            <p class="subDetails">October 2004 - December 2006</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-          </article>
-          
-          
-           <article>
-            <h2>Research Associate</h2>
-             <h3>MPI Research</h3>
-            <p class="subDetails">October 2004 - December 2006</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-          </article>
-          
-        </div>
-        
-        
-        <div class="clear"></div>
-      </section>
 
 
       <section>
@@ -99,66 +71,66 @@
 
         <div class="sectionContent">
           <ul class="keySkills">
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
+             @foreach($skill as $skill)
+            <li>{{$skill['skill_name']}}</li>
+						<li>{{$skill['skill_percentage']}}</li>
+            @endforeach
           </ul>
         </div>
         <div class="clear"></div>
       </section>
 
 
-      <section id="Education">
+     <section id="Education">
+  <div class="sectionTitle">
+    <h1>Education</h1>
+  </div>
+
+  @foreach($education as $education)
+    <div class="sectionContent">
+      <article>
+        <h2>{{$education['degree_title']}}</h2>
+        <h3>{{$education['institute']}}</h3>
+        <p class="subDetails">{{$education['edu_start_date']}} - {{$education['edu_end_date']}}</p>
+        <p>{{$education['education_description']}}</p>
+      </article>
+    </div>
+  @endforeach
+  
+  <div class="clear"></div>
+</section>
+
+      <section id="Languages">
         <div class="sectionTitle">
-          <h1>Education</h1>
+          <h1>Languages</h1>
         </div>
 
+        @foreach($languages as $languages)
         <div class="sectionContent">
           <article>
-            <h2>Bachelor’s of Science, Nursing</h2>
-            <p class="subDetails">Northern Michigan University</p>
-            <p>Cum Laude  
-Honors Society of Nursing, Sigma Theta Tau International, Xi Sigma Chapter 
-NMU Nursing School Clinical Excellence Awards: OB, Psychiatric Care, Community Health 
-Dean’s List for academic achievement (NMU)
-</p>
+            <h2>{{$languages['language']}}</h2>
+            <h3>{{$languages['language_level']}}</h3>
           </article>
-
-          <article>
-            <h2>Western Michigan University</h2>
-            <p class="subDetails">Bachelor’s of Science, Behavioural Psychology </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim.</p>
-          </article>
-        </div>
+        
+        </div> 
+            @endforeach         
         <div class="clear"></div>
       </section>
 
+
       
       <section>
-        <article>
-          <div class="sectionTitle">
-            <h1>Publications</h1>
-          </div>
-
-          <div class="sectionContent">
-            <p> Jin, Lei, Mogan, Jennifer, et al. "STING/MPYS mediates host defense against listeria monocytogenes infection by regulating Ly6Chi monocyte migration." The Journal of Immunology 190.6 (2013): 2835-2843.</p> 
-          </div>
-          
-          <div class="sectionContent">
-            <p>Knowles, Heather, Mogan, Jennifer, et al. "Transient Receptor Potential Melastatin 2 (TRPM2) ion channel is required for innate immunity against Listeria monocytogenes." Proceedings of the National Academy of Sciences 108.28 (2011): 11578-11583.</p>
-          </div>
-          
-          <div class="sectionContent">
-            <p>Jin, Lei, Mogan, Jennifer, et al. "MPYS is required for IFN response factor 3 activation and type I IFN production in the response of cultured phagocytes to bacterial second messengers cyclic-di-AMP and cyclic-di-GMP." The Journal of Immunology 187.5 (2011): 2595-2601.</p>
-          </div>
-          
-        </article>
-        <div class="clear"></div>
+        <div class="address">
+								<div class="item">
+									<div class="contactInfo">
+										Projects
+                    @foreach($projects as $project)
+                    {{ $project['project_title'] }}
+                    {{ $project['project_description'] }}
+                    @endforeach
+									</div>
+								</div>
+							</div>
       </section>
       
       

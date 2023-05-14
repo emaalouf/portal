@@ -1045,30 +1045,11 @@
         <div class="skillssectiondiv" id="techskills">
       <section class="sectiontitle">
         <h3 id="techskillsh3id">SKILLS</h3>
-        <div class="firstchart">
-          <svg width="100" height="100" stroke-linecap="round">
-            <circle id="innerc1" r="35" cx="50" cy="50" />         
-<circle class="expertp" id="outerc1" r="40" cx="50" cy="50" />
-            <p class="expertp level" >Beginner</p>
-       <p class="expertp">this, this, the other </p>
-</svg>
-                  
-</div>
-<div class="secondchart">
-  <svg width="100" height="100" stroke-linecap="round">
-            <circle id="innerc2" r="35" cx="50" cy="50" />         
-            <circle id="outerc2" r="40" cx="50" cy="50" />
-  </svg>
-        <p class="expertp level">Proficient</p>
-        <p class="expertp">this, this, the other</p>
- </div>
-        <div class="thirdchart">
-<svg width="100" height="100" stroke-linecap="round">
-            <circle id="innerc3" r="35" cx="50" cy="50" />         
-<circle id="outerc3" r="40" cx="50" cy="50" />
-          </svg>
-          <p class="level" id="expertcircle">Expert</p>
- <p class="expertp1">this, this, the other</p>
+        <div>
+           @foreach($skill as $skill)
+            <h2>Name:{{$skill['skill_name']}}</h2>
+						<h3>Percentage:{{$skill['skill_percentage']}}</h3>
+            @endforeach
         </div>
         </section>
     </div>
@@ -1092,63 +1073,53 @@
 
   </div>
     
-  <div class="experience"><h3>Experience</h3>
-   <div class="jobholder">
+<div class="experience">
+  <h3>Experience</h3>
+  
+  <div class="jobholder">
+    @foreach($experience as $job)
     <div class="job1">
-      <p class="jobyear">Year: Role title / Place place place place place</p>
+      <p class="jobyear">{{$job['job_start_date']}} - {{$job['job_end_date']}}: {{$job['job_title']}} / {{$job['organization']}}</p>
       <button class="roledetails1">Details</button>
-       <ul class="listeddetails1">
-      <li>this</li>
-      <li>this</li>
-      <li>this</li>
-      <li>this</li>
-      <li>this</li>
-      <li>this</li>
-  </ul>
-</div>
-<div class="job2">
-  <p class="jobyear">Year: Role title / Place place place place place</p>
-    <button class="roledetails2">Details</button>
-      <ul class="listeddetails2">
-      <li>this</li>
-      <li>this</li>
-      <li>this</li>
-      <li>this</li>
-      <li>this</li>
-      <li>this</li>
-  </ul>
-</div>
-   
-     <div class="job1">
-      <p class="jobyear">Year: Role title / Place place place place place</p>
-      <button class="roledetails3">Details</button>
-      <ul class="listeddetails3">
-        <li>this</li>
-        <li>this</li>
-        <li>this</li>
-        <li>this</li>
-        <li>this</li>
-        <li>this</li>
-  </ul>
-</div>
-     
-      </div>
-  </section>
+      <ul class="listeddetails1">
+        <li>{{$job['job_description']}}</li>
+      </ul>
+    </div>
+    @endforeach
   </div>
+</div>
+
 <div class="hobbiessectiondiv">      
   <section class="sectiontitle"><h3 id="hobbiessectionh3id">Hobbies & Interests</h3>
-  <p>Not camping. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut condimentum, turpis at faucibus ornare, sem enim scelerisque mauris, a pulvinar ante eros sed ligula. Sed gravida et ligula eget faucibus. Sed dictum, neque aliquam gravida convallis, ex dolor imperdiet urna, id pretium ante arcu eget dolor. Sed ac hendrerit ligula. Duis porttitor dolor massa. Fusce blandit quam aliquam, efficitur risus at, venenatis metus. Vestibulum venenatis bibendum ligula egestas dapibus. Aenean quis elit vitae purus porttitor luctus. </p>
+  @foreach($interest as $interest)
+    <p>{{$interest['interest']}} </p>
+    @endforeach
   </section>
 </div>
+
+      <section id="Languages">
+        <div class="sectionTitle">
+          <h1>Languages</h1>
+        </div>
+
+        @foreach($languages as $languages)
+        <div class="sectionContent">
+          <article>
+            <h2>{{$languages['language']}}</h2>
+            <h3>{{$languages['language_level']}}</h3>
+          </article>
+        
+        </div> 
+            @endforeach         
+        <div class="clear"></div>
+      </section>
 <section class="sectiontitle socialmedia">
   <div>
   <h3>Social</h3>
-    <div class="social">
-      <a href="#/"><img id="codepenlogo"src="https://blog.codepen.io/wp-content/uploads/2012/06/Button-Black-Large.png"></a>
-    </div>
-      <div class="social">
-      <a href="#"><img id="behance" src="https://image.freepik.com/free-icon/behance-logo-in-circular-social-interface-button_318-72231.png"></a>
-    </div>
+   @foreach($projects as $project)
+                   Title: {{ $project['project_title'] }}
+                   Description: {{ $project['project_description'] }}
+                    @endforeach
 </section>
  </div>
 </div>
