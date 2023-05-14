@@ -1,11 +1,4 @@
-<!--Copyright 2018 Made by me-->
 
-<!--still to add:
-  1. Fixed header and nav links
-  2.SM links
-  3.logo / is the svg necessary? It slows the page down.
-  4.Better font/option for users to add their ideal font.
--->
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,10 +14,13 @@
   <!--everything goes in here-->
 <div class="container">
   <!--page header-->
-  <div class="page-header">
-    <h1>REAL NAME</h1>
-      <p id="h1ptag">Short tagline about you / your role.</p>
-  </div>
+@foreach($personal_information as $personal_info)
+    <div class="page-header">
+        <h1>{{ ($personal_info['first_name'] ?? '') . ' ' . ($personal_info['last_name'] ?? '') }}</h1>
+        <p id="h1ptag">{{ 'About:' . ($personal_info['about_me'] ?? '') }}</p>
+        <p id="h1ptag">{{ 'Title:' . ($personal_info['profile_title'] ?? '') }}</p>
+    </div>
+@endforeach
   <!--end of page header-->
   
   <!--start of nav menu-->
@@ -1037,8 +1033,13 @@
 <!--end of brain svg-->
   <div class="profilesectiondiv" id="profileid">
     <section class="sectiontitle">
-      <h3 id="profilesectionh3id">PROFILE</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut condimentum, turpis at faucibus ornare, sem enim scelerisque mauris, a pulvinar ante eros sed ligula. <br>Sed gravida et ligula eget faucibus. Sed dictum, neque aliquam gravida convallis, ex dolor imperdiet urna, id pretium ante arcu eget dolor. </p>
+      @foreach($contact_information as $contact_information)				
+      <p><a href="mailto:{{$contact_information['email']}}" title="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a></p>
+      <p><a href="{{$contact_information['website']}}" title="Website"><i class="fa fa-globe" aria-hidden="true"></i></a></p>
+      <p><a href="{{$contact_information['linkedin_link']}}" title="LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></p>
+      <p><a href="{{$contact_information['github_link']}}" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></p>
+      <p><a href="https://twitter.com/{{$contact_information['twitter']}}" title="Twitter"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></p>
+      @endforeach
     </section>
  </div>
         <div class="skillssectiondiv" id="techskills">
@@ -1073,80 +1074,23 @@
     </div>
     
     <div class="educationsectiondiv sectiontitle">
-        <h3 id="educationsectionh3id">EDUCATION</h3>
-        <section class="timeline">
-  <ul>
-    <li>
-      <div>
-        <time>Year</time>
-        Qualification / Course Type,
-        Institution / University
-      </div>
-    </li>
-     <li>
-      <div>
-        <time>Year</time>
-        Qualification / Course Type,
-        Institution / University
-       </div>
-    </li>
-    <li>
-      <div>
-        <time>Year</time>
-        Qualification / Course Type,
-        Institution / University
-       </div>
-    </li>
-  
-    <li>
-      <div>
-        <time>Year</time>
-        Qualification / Course Type,
-        Institution / University
-       </div>
-    </li>
-    
-    <li>
-      <div>
-        <time>Year</time>
-        Qualification / Course Type,
-        Institution / University
-       </div>
-    </li>
-    
-    <li>
-      <div>
-        <time>Year</time>
-        Qualification / Course Type,
-        Institution / University
-       </div>
-      
-      <li>
-      <div>
-        <time>Year</time>
-        Qualification / Course Type,
-        Institution / University
-       </div>
-    </li>
-    <li>
-      <div>
-        <time>Year</time>
-        Qualification / Course Type,
-        Institution / University
-       </div>
-    </li>
-    
-    <li>
-      <div>
-        <time>Year</time>
-        Qualification / Course Type,
-        Institution / University
-       </div>
-    </li>
-   
-  </ul>
-</section>
+  <h3 id="educationsectionh3id">EDUCATION</h3>
+  <section class="timeline">
+    <ul>
+      @foreach ($educationData as $education)
+        <li>
+          <div>
+            <time>{{$education['edu_end_date']}}</time>
+            {{$education['degree_title']}},
+            {{$education['institute']}}
+          </div>
+        </li>
+      @endforeach
+    </ul>
+  </section>
 </div>
+
+  </div>
     
   <div class="experience"><h3>Experience</h3>
    <div class="jobholder">

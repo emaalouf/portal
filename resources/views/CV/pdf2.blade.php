@@ -1,8 +1,23 @@
 <div class="cv">
   <div class="cv-row">
     <div class="cv-wrap">
-      <div class="cv-name">Your Name</div>
-      <div class="cv-subname">Senior Frontend Developer</div>
+@foreach($personal_information as $personal_info)
+    <div class="cv-name">{{ 'Name: ' . ($personal_info['first_name'] ?? '') }}</div>
+    <div class="cv-subname">{{ 'Title: ' . ($personal_info['profile_title'] ?? '') }}</div>
+    <div class="cv-subname">{{ 'About: ' . ($personal_info['about_me'] ?? '') }}</div>
+@endforeach
+<div id="contactDetails" class="quickFade delayFour">
+  @foreach($contact_information as $contact_information)				
+  <ul>
+    <li><a href="mailto:{{$contact_information['email']}}" title="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+    <li><a href="{{$contact_information['website']}}" title="Website"><i class="fa fa-globe" aria-hidden="true"></i></a></li>
+    <li><a href="{{$contact_information['linkedin_link']}}" title="LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+    <li><a href="{{$contact_information['github_link']}}" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+    <li><a href="https://twitter.com/{{$contact_information['twitter']}}" title="Twitter"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+  </ul>
+  @endforeach
+</div>
+
       <div class="cv-content">
         <div class="head-title">Exprecince</div>
         <div class="cv-content-item">
@@ -31,23 +46,18 @@
         </div>
 
       </div>
-      <div class="cv-content">
-        <div class="head-title">Education</div>
-        <div class="cv-content-item">
-          <div class="title">Front-End development courses from W3C
-          </div>
-          <div class="subtitle">Enterprise Name</div>
-          <div class="time">Aug 2017 - Present - 3 year, Turkey</div>
-          <div class="exprecince">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a ante pulvinar, consectetur ante et.</div>
-        </div>
-        <div class="cv-content-item">
-          <div class="title">Front-end development courses from freeCodeCamp.org Curriculum</div>
-          <div class="subtitle">Enterprise Name</div>
-          <div class="time">Aug 2015 - 1 year, Paris</div>
-          <div class="exprecince">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a ante pulvinar, consectetur ante et.</div>
-        </div>
+    <div class="cv-content">
+  <div class="head-title">Education</div>
+  @foreach ($educationData as $education)
+    <div class="cv-content-item">
+      <div class="title">{{$education['degree_title']}}</div>
+      <div class="subtitle">{{$education['institute']}}</div>
+      <div class="time">{{$education['edu_start_date']}} - {{$education['edu_end_date']}}</div>
+      <div class="exprecince">{{$education['education_description']}}</div>
+    </div>
+  @endforeach
+</div>
 
-      </div>
     </div>
     <div class="cv-wrap">
       <div class="avatar">

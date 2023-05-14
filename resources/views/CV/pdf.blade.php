@@ -205,23 +205,27 @@
 
 <!--  This is my personal modification of the Responsive CV temple made by Eric Traecy (https://codepen.io/erictreacy/pen/EbWmbY).
 Please feel free to use on your own.  -->
-<body>
-  <div id="drag" class="cv instaFade breakFastBurrito">
+<div id="drag" class="cv instaFade breakFastBurrito">
     <div class="mainDetails">
-      <div id="headshot" class="quickFade">
-        <img src="https://gravatar.com/avatar/9cc7c9fd04c88414236a678279c5db3f?s=512&d=https://codepen.io/assets/avatars/user-avatar-512x512-6e240cf350d2f1cc07c2bed234c3a3bb5f1b237023c204c782622e80d6b212ba.png" title="Hi, I'm Chris" alt="Christopher Hill" />
-      </div>
-
-      <div id="name">
-        <h1 class="quickFade delayTwo"> @foreach($personal_information as $personal_information)Name:{{ $personal_information['first_name'] }} {{ $personal_information['last_name'] }}@endforeach</h1>
-				<div class="bioDetails">
-					<div style="float: left">August 21, 1985</div>
-					<div style="float: right">Citizenship: U.S.A.</div>
-					<div style="margin: 0 auto; width: 100px;">MDiv</div>
-				</div>				
-      </div>
-      <div class="clear"></div>
+        <div id="headshot" class="quickFade">
+            @foreach($personal_information as $info)
+                <img src="{{ asset('assets/images/' . ($info['image_path'] ?? 'default.jpg')) }}" />
+                Name: {{ ($personal_information['first_name'] ?? '') }} {{ ($personal_information['last_name'] ?? '') }}
+            @endforeach
+        </div>
+        <div id="name">
+            Title: {{ ($personal_information['profile_title'] ?? '') }}
+            About: {{ ($personal_information['about_me'] ?? '') }}
+            <div class="bioDetails">
+                <div style="float: left">{{ ($personal_information['date_of_birth'] ?? '') }}</div>
+                <div style="float: right">Citizenship: {{ ($personal_information['citizenship'] ?? '') }}</div>
+                <div style="margin: 0 auto; width: 100px;">{{ ($personal_information['degree'] ?? '') }}</div>
+            </div>
+        </div>
+        <div class="clear"></div>
     </div>
+</div>
+
 
 		<div class="primaryContent">
 		<div id="personalArea" class="quickFade delayFour">
@@ -229,21 +233,31 @@ Please feel free to use on your own.  -->
 						<div class="sectionTitle">
 							<h1>Basic Info</h1>
 						</div>
-						<div class="sectionContent">				
+						<div class="sectionContent">
+                            @foreach($contact_information as $contact_information)				
 							<div class="phone">
 								<div class="item">
-									<div class="contactIcon"><i class="fa fa-phone fa-fw fa-lg" aria-hidden="true"></i></div>
-									<div class="contactInfo">+254 727 799341</div>	
-								</div>
-								<div class="item">
-									<div class="contactIcon"><i class="fa fa-phone fa-fw fa-lg" aria-hidden="true"></i></div>
-									<div class="contactInfo">+1 (970) 612-8962 </div>
-								</div>
-								<div class="item">
 									<div class="contactIcon"><i class="fa fa-at fa-fw fa-lg" aria-hidden="true"></i></div>
-										<div class="contactInfo">fatherchill@gmail.com</div>
+										<div class="contactInfo">Email:{{$contact_information['email']}}</div>
+								</div>
+                                <div class="item">
+									<div class="contactIcon"><i class="fa fa-at fa-fw fa-lg" aria-hidden="true"></i></div>
+										<div class="contactInfo">Website:{{$contact_information['website']}}</div>
+								</div>
+                                <div class="item">
+									<div class="contactIcon"><i class="fa fa-at fa-fw fa-lg" aria-hidden="true"></i></div>
+										<div class="contactInfo">LinkedIn:{{$contact_information['linkedin_link']}}</div>
+								</div>
+                                <div class="item">
+									<div class="contactIcon"><i class="fa fa-at fa-fw fa-lg" aria-hidden="true"></i></div>
+										<div class="contactInfo">Github:{{$contact_information['github_link']}}</div>
+								</div>
+                                    <div class="item">
+									<div class="contactIcon"><i class="fa fa-at fa-fw fa-lg" aria-hidden="true"></i></div>
+										<div class="contactInfo">Twitter:{{$contact_information['twitter']}}</div>
 								</div>
 							</div>
+                            @endforeach
 							<div class="address">
 								<div class="item">
 									<div class="contactIcon"><i class="fa fa-envelope fa-fw fa-lg" aria-hidden="true"></i></div>
@@ -255,7 +269,7 @@ Please feel free to use on your own.  -->
 									</div>
 								</div>
 							</div>
-							<p><p/>
+
 
 						</div>
 			</section>			
@@ -302,21 +316,16 @@ Please feel free to use on your own.  -->
         <div class="sectionTitle">
           <h1>Education</h1>
         </div>
+        @foreach($education as $education)
         <div class="sectionContent">
           <article>
-            <h2>Master of Divinity</h2>
-						<h3>Trinity School for Ministry, Ambridge, PA, U.S.A.</h3>
-            <p class="subDetails">August 2014 - May 2017</p>
-            <p>Studies covered the practical, pastoral, theological, and biblical aspects of Ministry. Earned award for excellence in Hebrew exegesis.</p>
-          </article>
-
-          <article>
-            <h2>Bachelor's of Arts in Bible</h2>
-						<h3>Moody Bible Institute, Chicago, IL, U.S.A.</h3>
-            <p class="subDetails">August 2004 - May 2008</p>
-            <p>Graduated with a double emphasis in Greek and Hebrew exegesis.</p>
+            <h2>{{$education['degree_title']}}</h2>
+						<h3>{{$education['institute']}}</h3>
+            <p class="subDetails">{{$education['edu_start_date']}} - {{$education['edu_end_date']}}</p>
+            <p>{{$education['education_description']}}</p>
           </article>
         </div>
+        @endforeach
         <div class="clear"></div>
       </section>
 

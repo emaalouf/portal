@@ -1,24 +1,28 @@
 <body>
   <div id="drag" class="cv instaFade wrap">
     <div class="mainDetails">
-      <div id="headshot" class="">
-        <img src="https://avatars2.githubusercontent.com/u/24512843?s=400&v=4" title="Hi, I'm Jenny!" alt="Jennifer Mogan" />
-      </div>
 
-      <div id="name">
-        <h1 class="quickFade delayTwo">Jennifer Mogan</h1>
-        <h4 class="quickFade delayThree">RN, BSN, BS</h4>
-         <h4 class="quickFade delayThree">Under Construction</h4>
-      </div>
+ <div id="name">
+    @foreach($personal_information as $personal_info)
+        <h1 class="quickFade delayTwo">{{ 'Name: ' . ($personal_info['first_name'] ?? '') . ' ' . ($personal_info['last_name'] ?? '') }}</h1>
+        <h1 class="quickFade delayTwo">{{ 'Title: ' . ($personal_info['profile_title'] ?? '') }}</h1>
+        <h1 class="quickFade delayTwo">{{ 'About: ' . ($personal_info['about_me'] ?? '') }}</h1>
+    @endforeach
+</div>
 
-      <div id="contactDetails" class="quickFade delayFour">
-        <ul>
-          
-         <!-- <li><a href="//linkedin.com/in/jennifermogan" title="LinkedIn"><i class="fa fa-print" aria-hidden="true"></i></a></li>-->
-          <li><a href="//linkedin.com/in/jennifermogan" title="LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-          
-        </ul>
-      </div>
+
+   <div id="contactDetails" class="quickFade delayFour">
+      <ul>
+        @foreach($contact_information as $contact_information)				
+        <li><a href="mailto:{{$contact_information['email']}}" title="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+        <li><a href="{{$contact_information['website']}}" title="Website"><i class="fa fa-globe" aria-hidden="true"></i></a></li>
+        <li><a href="{{$contact_information['linkedin_link']}}" title="LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+        <li><a href="{{$contact_information['github_link']}}" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+        <li><a href="https://twitter.com/{{$contact_information['twitter']}}" title="Twitter"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+        @endforeach
+      </ul>
+    </div>
+
      <div class="clear"></div>
     </div>
 

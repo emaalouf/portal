@@ -52,10 +52,12 @@ public function download()
     $contact_information = ContactInformation::where('user_id', $userId)->get()->toArray();
     $education = Education::where('user_id', $userId)->get()->toArray();
     $experience = Experience::where('user_id', $userId)->get()->toArray();
+    dd($experience);
     $interests = Interests::where('user_id', $userId)->get()->toArray();
     $languages = Languages::where('user_id', $userId)->get()->toArray();
     $projects = Projects::where('user_id', $userId)->get()->toArray();
     $skills = Skills::where('user_id', $userId)->get()->toArray();
+
 
     // Generate the PDF with the data
     $pdf = PDF::loadView('CV.pdf', compact(
