@@ -80,27 +80,41 @@ class JobController extends Controller
 
 public function search(Request $request)
 {
-    $jobSkillUserQuery = JobSkillUser::query();
+    $jobSkills = explode(',', $request->job_skills);
 
+    $users = User::with(['skills', 'posts' => function ($query) {
+        $query->has('company');
+    }])->whereHas('skills', function($query) use($jobSkills) {
+        $query->whereIn('name', $jobSkills);
+    })->get();
 
-    if ($request->job_skills) {
-        $jobSkillIds = explode(',', $request->job_skills);
-        $jobSkillUserQuery->whereIn('job_skill_id', $jobSkillIds);
+    $postIds = collect([]);
+
+    foreach ($users as $user) {
+        $postIds = $postIds->merge($user->posts->pluck('id'));
     }
 
+    $posts = Post::whereIn('id', $postIds);
 
-    if ($request->user_skills) {
-        $userSkillIds = explode(',', $request->user_skills);
-        $jobSkillUserQuery->whereIn('user_skill_id', $userSkillIds);
+    if ($request->q) {
+        $posts = $posts->where('job_title', 'LIKE', '%' . $request->q . '%');
+    } elseif ($request->category_id) {
+        $posts = $posts->whereHas('company', function ($query) use ($request) {
+            return $query->where('company_category_id', $request->category_id);
+        });
+    } elseif ($request->job_level) {
+        $posts = $posts->where('job_level', 'LIKE', '%' . $request->job_level . '%');
+    } elseif ($request->education_level) {
+        $posts = $posts->where('education_level', 'LIKE', '%' . $request->education_level . '%');
+    } elseif ($request->employment_type) {
+        $posts = $posts->where('employment_type', 'LIKE', '%' . $request->employment_type . '%');
     }
 
-
-    $postIds = $jobSkillUserQuery->pluck('post_id')->unique()->toArray();
-
-    $posts = Post::whereIn('id', $postIds)->has('company')->with('company')->paginate(1);
+    $posts = $posts->has('company')->with('company')->paginate(1);
 
     return $posts->toJson();
 }
+
 
 
 

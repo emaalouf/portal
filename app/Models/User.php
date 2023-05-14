@@ -75,4 +75,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Skills');
     }
 
+        public function Jobskills()
+    {
+        return $this->belongsToMany(JobSkill::class, 'user_skills', 'user_id', 'skill_id')
+                    ->withPivot('skill_percentage');
+    }
+
+
 }

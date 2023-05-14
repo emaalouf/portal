@@ -45,4 +45,9 @@ class Post extends Model
     {
         return explode(',', $this->skills);
     }
+
+    public function skills()
+    {
+        return $this->belongsToMany(JobSkill::class, 'post_job_skill')->withPivot('skill_percentage');
+    }
 }
