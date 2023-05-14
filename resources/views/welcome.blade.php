@@ -202,7 +202,7 @@
                             <div class="custom-block custom-block-full">
                                 <div class="custom-block-image-wrap">
                                     <a href="/CVTemplate">
-                                        <img src="images/logo.PNG" class="custom-block-image img-fluid" alt="">
+<img src="{{ asset('images/Joseph.JPG') }}" class="custom-block-image img-fluid" alt="">
                                     </a>
                                 </div>
 
