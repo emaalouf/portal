@@ -84,7 +84,7 @@
         </div>
         <div class="sectionContent">
           <article>
-            @foreach($skill as $skill)
+            @foreach($skills as $skill)
             <h2>{{$skill['skill_name']}}</h2>
 						<h3>{{$skill['skill_percentage']}}</h3>
             @endforeach

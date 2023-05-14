@@ -89,24 +89,9 @@ public function download()
 
   if ($template == 4) {
  return $pdf->download('pdf3.CV');
-  }
-
-  if ($template == 5) {
- return $pdf->download('pdf4.CV');
-  }
-
-  if ($template == 6) {
- return $pdf->download('pdf5.CV');
-  }
-
-  if ($template == 7) {
- return $pdf->download('pdf6.CV');
-  }
-
-  if ($template == 8) {
- return $pdf->download('pdf7.CV');
   
-
+  
+  }else{
     return redirect()->route('cv.index');
           
     }
