@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AboutPageController;
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\AuthorController;
 use App\Http\Controllers\CompanyCategoryController;
@@ -20,14 +21,14 @@ Route::get('/', function () {
 });
 
 Route::get('forgot-password', [AccountController::class, 'forgotPasswordView'])->name('forgot-password');
-Route::post('forgot-password', [AccountController::class, 'forgotPassword'])->name('forgot-password');
+Route::post('forgot-password', [AccountController::class, 'forgotPassword'])->name('forgot-password1');
 // Route::get('/', [PostController::class, 'index'])->name('post.index');
 Route::get('/job/{job}', [PostController::class, 'show'])->name('post.show');
 Route::get('employer/{employer}', [AuthorController::class, 'employer'])->name('account.employer');
 Route::view('/forgot', 'auth.forgot-password')->name('forgot');
 Route::view('/welcome', 'welcome')->name('welcome');
 //return vue page
-Route::get('/search', [JobController::class, 'index'])->name('job.index');
+Route::get('/search/{id}', [JobController::class, 'index'])->name('job.index');
 
 
 
@@ -55,7 +56,7 @@ Route::prefix('cv')->group(function () {
     Route::get('/edit/{id}', [UserprofileController::class, 'edit'])->name('edit');
     Route::post('/update', [UserprofileController::class, 'update'])->name('update');
     Route::delete('/destroy/{id}', [UserprofileController::class, 'destroy'])->name('destroy');
-    Route::get('/download-cv', [UserprofileController::class, 'download'])->name('cv.download');
+    Route::get('/download-cv/{id}', [UserprofileController::class, 'download'])->name('cv.download');
 
 });
   //Admin Role Routes
@@ -106,4 +107,6 @@ Route::view('CVTemplates', 'CVTemplate.index');
 Route::get('/save', [CVController::class, 'save'])->name('save_template');
 Route::get('contact-us', [ContactUsController::class, 'show'])->name('contact-us.show');
 Route::post('contact-us', [ContactUsController::class, 'send'])->name('contact-us.send');
+Route::get('/getabout', [AboutPageController::class, 'index']);
+Route::post('/postabout', [AboutPageController::class, 'submit']);
 

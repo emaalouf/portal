@@ -31,7 +31,7 @@
 
             <div class="row justify-content-center">
 
-                <div class="col-lg-6 col-12">
+                <div class="col-lg-6 col-12 mt-2">
                     <div class="custom-block d-flex">
                         <div class="">
                             <div class="custom-block-icon-wrap">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-12">
+                <div class="col-lg-6 col-12 mt-2">
                     <div class="custom-block d-flex">
                         <div class="">
                             <div class="custom-block-icon-wrap">
@@ -62,7 +62,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-12">
+                <div class="col-lg-6 col-12 mt-3 ">
                     <div class="custom-block d-flex">
                         <div class="">
                             <div class="custom-block-icon-wrap">
@@ -75,7 +75,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-12">
+                <div class="col-lg-6 col-12 mt-3">
                     <div class="custom-block d-flex">
                         <div class="">
                             <div class="custom-block-icon-wrap">

@@ -8,7 +8,7 @@
                     <h1 class="m-0">Edit User Profile</h1>
                 </div>
                 <div class="col-4 text-right">
-                    <a href="{{ route('index') }}" class="add-btn">
+                    <a href="{{ route('cv.index') }}" class="add-btn">
                         <i class="fa fa-home"></i>
                         <br> Home
                     </a>
@@ -22,7 +22,7 @@
                 <div class="col-sm-12">
                     <ul class="page-breadcrumb breadcrumb">
                         <li class="breadcrumb-item"><i class="fas fa-angle-right"></i></li>
-                        <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('cv.index') }}">Home</a></li>
                         <li class="breadcrumb-item"><i class="fas fa-angle-right"></i></li>
                         <li class="breadcrumb-item">Edit User Profile</li>
                     </ul>

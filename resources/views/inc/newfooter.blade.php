@@ -67,7 +67,7 @@
 
                     <div class="col-lg-2 col-md-3 col-12">
                         <a class="navbar-brand" href="index.html">
-                            <img src="images/logo.PNG" class="logo-image img-fluid" alt="templatemo pod talk">
+                            <img src="images/logo.jpeg" class="logo-image img-fluid" alt="templatemo pod talk">
                         </a>
                     </div>
 

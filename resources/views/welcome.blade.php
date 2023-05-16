@@ -15,15 +15,16 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap" rel="stylesheet">
                         
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/bootstrap-icons.min.css">
 
-        <link rel="stylesheet" href="css/bootstrap-icons.css">
 
-        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
         
-        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
 
-        <link href="css/templatemo-pod-talk.css" rel="stylesheet">
+        <link href="{{ asset('css/templatemo-pod-talk.css') }}" rel="stylesheet">
+        
         
             
 
@@ -117,40 +118,31 @@
                                <p style="margin-left: 340px;">They got the job they were looking for thanks to CV Design:</p>
                             </div>
                         </div>
-
+                        
+ 
                         <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                             <div class="custom-block custom-block-full">
-                                <div class="custom-block-image-wrap">
-                                    <a href="/CVTemplate">
-                                        <img src="images/logo.PNG" class="custom-block-image img-fluid" alt="">
-                                    </a>
-                                </div>
+                            <div class="custom-block-image-wrap" style="text-align: center;">
+  <a href="/CVTemplates">
+    <img src="{{ asset('images/Elias.jpeg') }}"class="custom-block-image img-fluid" alt="" style="display: inline-block; ">
+  </a>
+</div>
+
 
                                 <div class="custom-block-info">
                                     <h5 class="mb-2">
-                                        <a href="/CVTemplate">
-                                         Zaher
+                                        <a href="/CVTemplates">
+                                         Elias
                                         </a>
                                     </h5>
 
                                     <div class="profile-block d-flex">
 
-                                        <p>Without a doubt, a great success for me. In 15 minutes I created my CV and sent it through the email program.
+                                        <p>Without a doubt, a great success for me. In 15 minutes I created my CV and sent it through the email program. Elias Maalouf.
                                             <strong></strong></p>
                                     </div>
 
 
-                                      <div class="custom-block-bottom d-flex justify-content-between mt-3">
-                                       
-
-                                        <a href="#" class="bi-heart me-1">
-                                            <span>2.5k</span>
-                                        </a>
-
-                                        <a href="#" class="bi-chat me-1">
-                                            <span>924k</span>
-                                      </a>
-                                   </div>
                                 </div>
 
                              
@@ -174,22 +166,12 @@
                                     <div class="profile-block d-flex">
 
                                         <p>
-                                            Very practical to be able to organize all my CVs and requests in one place with CVDesign. The templates are gorgeous!
+                                            Very practical to be able to organize all my CVs and requests in one place with CV Design. The templates are gorgeous!
                                         </p>
                                     </div>
 
 
-                                    <div class="custom-block-bottom d-flex justify-content-between mt-3">
-                                       
-
-                                        <a href="#" class="bi-heart me-1">
-                                            <span>2.5k</span>
-                                        </a>
-
-                                        <a href="#" class="bi-chat me-1">
-                                            <span>924k</span>
-                                        </a>
-                                    </div>
+                         
                                 </div>
 
                              
@@ -198,44 +180,32 @@
                             
                         </div>
 
-                        <div class="col-lg-4 col-12">
-                            <div class="custom-block custom-block-full">
-                                <div class="custom-block-image-wrap">
-                                    <a href="/CVTemplate">
-<img src="{{ asset('images/Joseph.JPG') }}" class="custom-block-image img-fluid" alt="">
-                                    </a>
-                                </div>
+                      <div class="col-lg-4 col-12">
+  <div class="custom-block custom-block-full">
+    <div class="custom-block-image-wrap">
+      <a href="/CVTemplates">
+        <img src="{{ asset('images/Joseph.JPG') }}" class="custom-block-image img-fluid" alt="">
+      </a>
+    </div>
 
-                                <div class="custom-block-info">
-                                    <h5 class="mb-2">
-                                        <a href="/CVTemplates">
-                                          Joseph 
-                                        </a>
-                                    </h5>
+    <div class="custom-block-info">
+      <h5 class="mb-2">
+        <a href="/CVTemplates">
+          Joseph
+        </a>
+      </h5>
 
-                                    <div class="profile-block d-flex">
+      <div class="profile-block d-flex">
+        <p>
+          I received very positive comments about my CV! I found a good job pretty quickly. I will definitely recommend them.
+        </p>
+      </div>
 
-                                        <p>
-                                            I received very positive comments about my CV! I found a good job pretty quickly. I will definitely recommend them.
-                                    </div>
+    
+    </div>
+  </div>
+</div>
 
-
-                                    <div class="custom-block-bottom d-flex justify-content-between mt-3">
-                                       
-
-                                        <a href="#" class="bi-heart me-1">
-                                            <span>2.5k</span>
-                                        </a>
-
-                                        <a href="#" class="bi-chat me-1">
-                                            <span>924k</span>
-                                        </a>
-                                    </div>
-                                </div>
-
-                              
-                            </div>
-                        </div>
 
                     </div>
                 </div>
@@ -248,7 +218,7 @@
 
         <!-- JAVASCRIPT FILES -->
         <script src="{{ asset('js/jquery.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('js/custom.js') }}"></script>
 

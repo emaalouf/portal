@@ -42,24 +42,28 @@ class UserprofileController extends Controller
     ));
 }
 
-public function download()
+public function download($id)
 {
-    // Get the authenticated user's ID
-    $userId = auth()->id();
+    
 
     // Fetch the data for the authenticated user
-    $personal_information = PersonalInformation::where('user_id', $userId)->get()->toArray();
-    $contact_information = ContactInformation::where('user_id', $userId)->get()->toArray();
-    $education = Education::where('user_id', $userId)->get()->toArray();
-    $experience = Experience::where('user_id', $userId)->get()->toArray();
-    $interests = Interests::where('user_id', $userId)->get()->toArray();
-    $languages = Languages::where('user_id', $userId)->get()->toArray();
-    $projects = Projects::where('user_id', $userId)->get()->toArray();
-    $skills = Skills::where('user_id', $userId)->get()->toArray();
+            $personal_information       = PersonalInformation::find($id)->toArray();
+            $contact_information        = ContactInformation::where('user_id', $id)->get()->first()->toArray();
+            $education      = Education::where('user_id', $id)->get()->toArray();
+            $experience     = Experience::where('user_id', $id)->get()->toArray();
+            $projects        = Projects::where('user_id', $id)->get()->toArray();
+            $skills          = Skills::where('user_id', $id)->get()->toArray();
+            $languages       = Languages::where('user_id', $id)->get()->toArray();
+            $interests       = Interests::where('user_id', $id)->get()->toArray();
 
 
-    // Generate the PDF with the data
-    $pdf = PDF::loadView('CV.pdf', compact(
+    // Get the template from the session
+    $template = session()->get('template');
+
+    // If the template is 1, redirect back to the CV index
+    // and return the session data
+    if ($template == 1) {
+         $pdf = PDF::loadView('CV.pdf', compact(
         'personal_information',
         'contact_information',
         'education',
@@ -69,26 +73,49 @@ public function download()
         'projects',
         'skills'
     ));
-
-    // Get the template from the session
-    $template = session()->get('template');
-
-    // If the template is 1, redirect back to the CV index
-    // and return the session data
-    if ($template == 1) {
- return $pdf->download('pdf.CV');
+ return $pdf->download('CV');
     }
 
   if ($template == 2) {
- return $pdf->download('pdf1.CV');
+     $pdf = PDF::loadView('CV.pdf1', compact(
+        'personal_information',
+        'contact_information',
+        'education',
+        'experience',
+        'interests',
+        'languages',
+        'projects',
+        'skills'
+    ));
+ return $pdf->download('CV');
   }
 
   if ($template == 3) {
- return $pdf->download('pdf2.CV');
+     $pdf = PDF::loadView('CV.pdf2', compact(
+        'personal_information',
+        'contact_information',
+        'education',
+        'experience',
+        'interests',
+        'languages',
+        'projects',
+        'skills'
+    ));
+ return $pdf->download('CV');
   }
 
   if ($template == 4) {
- return $pdf->download('pdf3.CV');
+     $pdf = PDF::loadView('CV.pdf3', compact(
+        'personal_information',
+        'contact_information',
+        'education',
+        'experience',
+        'interests',
+        'languages',
+        'projects',
+        'skills'
+    ));
+ return $pdf->download('CV');
   
   
   }else{
@@ -197,7 +224,6 @@ public function download()
                 $experience_info->job_title        = $request->job_title[$i];
                 $experience_info->organization     = $request->organization[$i];
                 $experience_info->job_start_date   = $request->job_start_date[$i];
-                $experience_info->job_end_date     = $request->job_end_date[$i];
                 $experience_info->job_description  = $request->job_description[$i];
                 $experience_info->save();
             }
@@ -250,7 +276,7 @@ public function download()
             }
         }
 
-        return redirect()->route('index')->withSuccess("User Profile created successfully");
+        return redirect()->route('cv.index')->withSuccess("User Profile created successfully");
     }
 
     public function edit($id)

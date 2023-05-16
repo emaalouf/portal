@@ -10,7 +10,7 @@
                     <p class="text-muted">Enter your email to receive an email to reset your password</p>
                 </div>
                 <div class="login-form">
-                    <form action="{{ route('forgot-password') }}" method="POST">
+                    <form action="{{ route('forgot-password1') }}" method="POST">
                         @csrf
 
                         <div class="form-group">

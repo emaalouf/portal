@@ -6,6 +6,8 @@ use App\Models\Company;
 use App\Models\CompanyCategory;
 use App\Models\Post;
 use App\Models\Skills;
+use App\Models\Education;
+use App\Models\Interests;
 use App\Models\PersonalInformation;
 use App\Models\User;
 use Carbon\Carbon;
@@ -13,106 +15,78 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-    public function index()
-    {
-        $users = User::with(['PersonalInformation', 'Skills'])->get();
-        $json = $users->toJson();
-        return view('job.index');
+public function index($id)
+{
+    $userId = auth()->id();
+    $skills = Skills::where('user_id', $id)->get()->toArray();
+    $education = Education::where('user_id', $id)->get()->toArray();   
+    $interests = Interests::where('user_id', $id)->get()->toArray();
+
+    $posts = Post::all()->toArray();
+    $personal_information = PersonalInformation::where('user_id', $id)->get()->toArray();
+
+    $postsWithSkills = [];
+    $postsWithEducation = [];
+    $postsWithInterests = [];
+
+    // Loop over all posts
+    foreach($posts as $post){
+        $postContainsSkill = false;
+        $postContainsEducation = false;
+        $postContainsInterest = false;
+
+        // Loop over all skills for each post
+        foreach($skills as $skill){
+            // Check if the skill is contained in the post title or description
+            if(stripos(strtolower(str_replace(' ', '', $post['job_title'])), strtolower(str_replace(' ', '', $skill['skill_name']))) !== false || stripos(strtolower(str_replace(' ', '', $post['job_title'])), strtolower(str_replace(' ', '', $skill['skill_name']))) !== false){
+                $postContainsSkill = true;
+                break;
+            }
+        }
+
+        // Loop over all education for each post
+        foreach($education as $edu){
+            // Check if the education is contained in the post title or description
+            if(stripos(strtolower(str_replace(' ', '', $post['job_title'])), strtolower(str_replace(' ', '', $edu['degree_title']))) !== false || stripos(strtolower(str_replace(' ', '', $post['job_title'])), strtolower(str_replace(' ', '', $edu['degree_title']))) !== false){
+                $postContainsEducation = true;
+                break;
+            }
+        }
+
+        // Loop over all interests for each post
+        foreach($interests as $interest){
+            // Check if the interest is contained in the post title or description
+            if(stripos(strtolower(str_replace(' ', '', $post['job_title'])), strtolower(str_replace(' ', '', $interest['interest']))) !== false || stripos(strtolower(str_replace(' ', '', $post['job_title'])), strtolower(str_replace(' ', '', $interest['interest']))) !== false){
+                $postContainsInterest = true;
+                break;
+            }
+        }
+
+        // If a post contains any skills, add it to the $postsWithSkills array
+        if($postContainsSkill){
+            $postsWithSkills[] = $post;     
+        }
+
+        // If a post contains any education, add it to the $postsWithEducation array
+        if($postContainsEducation){
+            $postsWithEducation[] = $post;  
+        }
+
+        // If a post contains any interests, add it to the $postsWithInterests array
+        if($postContainsInterest){
+            $postsWithInterests[] = $post;  
         
+        }
     }
 
-    //api route
-// public function search(Request $request)
-// {
-//     $jobSkills = explode(',', $request->job_skills);
-    
-//     $users = User::with('skills')->whereHas('skills', function($query) use($jobSkills) {
-//         $query->whereIn('name', $jobSkills);
-//     })->get();
-    
-//     $postIds = $users->flatMap(function($user) {
-//         return $user->posts->pluck('id');
-//     });
-    
-//     $posts = Post::whereIn('id', $postIds);
-    
-//     if ($request->q) {
-//         $posts = $posts->where('job_title', 'LIKE', '%' . $request->q . '%');
-//     } elseif ($request->category_id) {
-//         $posts = $posts->whereHas('company', function ($query) use ($request) {
-//             return $query->where('company_category_id', $request->category_id);
-//         });
-//     } elseif ($request->job_level) {
-//         $posts = $posts->where('job_level', 'LIKE', '%' . $request->job_level . '%');
-//     } elseif ($request->education_level) {
-//         $posts = $posts->where('education_level', 'LIKE', '%' . $request->education_level . '%');
-//     } elseif ($request->employment_type) {
-//         $posts = $posts->where('employment_type', 'LIKE', '%' . $request->employment_type . '%');
-//     }
-    
-//     $posts = $posts->has('company')->with('company')->paginate(10);
-
-//     return $posts->toJson();
-// }
-
-//  public function search(Request $request)
-//     {
-//         if ($request->q) {
-//             $posts = Post::where('job_title', 'LIKE', '%' . $request->q . '%');
-//         } elseif ($request->category_id) {
-//             $posts = Post::whereHas('company', function ($query) use ($request) {
-//                 return $query->where('company_category_id', $request->category_id);
-//             });
-//         } elseif ($request->job_level) {
-//             $posts = Post::where('job_level', 'Like', '%' . $request->job_level . '%');
-//         } elseif ($request->education_level) {
-//             $posts = Post::where('education_level', 'Like', '%' . $request->education_level . '%');
-//         } elseif ($request->employment_type) {
-//             $posts = Post::where('employment_type', 'Like', '%' . $request->employment_type . '%');
-//         } else {
-//             $posts = Post::take(30);
-//         }
-
-//         $posts = $posts->has('company')->with('company')->paginate(1);
-
-//         return $posts->toJson();
-//     }
+    // Pass the arrays to the view
+    return view('job.index', compact('postsWithSkills', 'postsWithEducation', 'postsWithInterests'));
+}
 
 public function search(Request $request)
 {
-    $jobSkills = explode(',', $request->job_skills);
+      $skills = Skills::where('user_id', $userId)->get()->toArray();
 
-    $users = User::with(['skills', 'posts' => function ($query) {
-        $query->has('company');
-    }])->whereHas('skills', function($query) use($jobSkills) {
-        $query->whereIn('name', $jobSkills);
-    })->get();
-
-    $postIds = collect([]);
-
-    foreach ($users as $user) {
-        $postIds = $postIds->merge($user->posts->pluck('id'));
-    }
-
-    $posts = Post::whereIn('id', $postIds);
-
-    if ($request->q) {
-        $posts = $posts->where('job_title', 'LIKE', '%' . $request->q . '%');
-    } elseif ($request->category_id) {
-        $posts = $posts->whereHas('company', function ($query) use ($request) {
-            return $query->where('company_category_id', $request->category_id);
-        });
-    } elseif ($request->job_level) {
-        $posts = $posts->where('job_level', 'LIKE', '%' . $request->job_level . '%');
-    } elseif ($request->education_level) {
-        $posts = $posts->where('education_level', 'LIKE', '%' . $request->education_level . '%');
-    } elseif ($request->employment_type) {
-        $posts = $posts->where('employment_type', 'LIKE', '%' . $request->employment_type . '%');
-    }
-
-    $posts = $posts->has('company')->with('company')->paginate(1);
-
-    return $posts->toJson();
 }
 
 

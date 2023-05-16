@@ -21,35 +21,36 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand me-lg-5 me-0" href="/">
-                    <img src="{{ asset('images/logo.PNG') }}" class="logo-image img-fluid" alt="templatemo pod talk">
+                    <img src="{{ asset('images/logo.jpeg') }}" class="logo-image img-fluid" alt="templatemo pod talk">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/CVTemplates">CV Template</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/contact">Contact</a>
-                        </li>
-                    </ul>
-                    @guest
-                    <div class="ms-4">
-                        <a href="/register" class="btn custom-btn custom-border-btn smoothscroll">Get started</a>
-                    </div>
-                    @endguest
-                    @auth
-                </div>
+               <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-lg-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/getabout">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/CVTemplates">CV Template</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+        </li>
+    </ul>
+    @guest
+    <div class="ms-4">
+        <a href="/register" class="btn custom-btn custom-border-btn smoothscroll">Get started</a>
+    </div>
+    @endguest
+    @auth
+</div>
+
                                     <div class="dropdown ms-4">
-                <button class="btn custom-btn custom-border-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <button clas s="btn custom-btn custom-border-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     <a class="dropdown-item" href="account/overview/">Dashboard</a>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -64,4 +65,6 @@
             </div>
         </div>
     </nav>
+    </main>
+
 

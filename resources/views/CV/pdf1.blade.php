@@ -1,664 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.2/jspdf.min.js" integrity="sha256-7yY4x9Gb1vqsx0jySxkg5lw+QnCz9Gt7Oio5I/lSj2M=" crossorigin="anonymous"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+  <title>Resume</title>
+</head>
 <body>
-  <div id="drag" class="cv instaFade wrap">
-    <div class="mainDetails">
+  <div id="main-container">
+    <div class="page" id="toPrint">
 
- <div id="name">
-    @foreach($personal_information as $personal_info)
-        <h1 class="quickFade delayTwo">{{ 'Name: ' . ($personal_info['first_name'] ?? '') . ' ' . ($personal_info['last_name'] ?? '') }}</h1>
-        <h1 class="quickFade delayTwo">{{ 'Title: ' . ($personal_info['profile_title'] ?? '') }}</h1>
-        <h1 class="quickFade delayTwo">{{ 'About: ' . ($personal_info['about_me'] ?? '') }}</h1>
-    @endforeach
-</div>
+        <h1 class="name" style="background-color: #53555b;color:#fff ">{{$personal_information['first_name']}}</h1>
 
-
-   <div id="contactDetails" class="quickFade delayFour">
-      <ul>
-        @foreach($contact_information as $contact_information)				
-        <li><a href="mailto:{{$contact_information['email']}}" title="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-        <li><a href="{{$contact_information['website']}}" title="Website"><i class="fa fa-globe" aria-hidden="true"></i></a></li>
-        <li><a href="{{$contact_information['linkedin_link']}}" title="LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-        <li><a href="{{$contact_information['github_link']}}" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-        <li><a href="https://twitter.com/{{$contact_information['twitter']}}" title="Twitter"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
-        @endforeach
-      </ul>
-    </div>
-
-     <div class="clear"></div>
-    </div>
-
-    <div id="mainArea" class="quickFade delayFive">
-      
-      <section>
-        <article>
-          <div class="sectionTitle">
-            <h1>Personal Profile</h1>
-          </div>
-
-          <div class="sectionContent">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor metus, interdum at scelerisque in, porta at lacus. Maecenas dapibus luctus cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat
-              luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-          </div>
-        </article>
-        <div class="clear"></div>
-      </section>
-
-
-    <section>
-  <div class="sectionTitle">
-    <h1>Work Experience</h1>
-  </div>
-
-  @foreach($work_experience as $job)
-  <div class="sectionContent">
-    <article>
-      <h3>{{$job['job_title']}} | {{$job['department']}}</h3>
-      <h3>{{$job['organization']}}</h3>
-      <p class="subDetails">{{$job['job_start_date']}} - {{$job['job_end_date']}}</p>
-      <p>{{$job['job_description']}}</p>
-    </article>
-  </div>
-  @endforeach
-
-  <div class="clear"></div>
-</section>
-
-
-
-      <section>
-        <div class="sectionTitle">
-          <h1>Key Skills</h1>
-        </div>
-
-        <div class="sectionContent">
-          <ul class="keySkills">
-             @foreach($skill as $skill)
-            <li>{{$skill['skill_name']}}</li>
-						<li>{{$skill['skill_percentage']}}</li>
+      <section class="contents">
+        <section class="main-section">
+          <section class="experience">
+            <div class="section-title">Experience</div>
+            @foreach($experience as $experience)
+            <div class="experience-card">
+              <div class="title">{{$experience['job_title']}}</div>
+              <div class="company">
+                <span class="name">{{$experience['organization']}}</span>
+                <span class="duration">{{$experience['job_start_date']}}{{$experience['job_end_date']}}</span>
+              </div>
+              <div>
+                <ul class='experience-list'>
+                  <li>{{$experience['job_description']}}</li>
+                </ul>
+              </div>
+            </div>
             @endforeach
-          </ul>
-        </div>
-        <div class="clear"></div>
-      </section>
-
-
-     <section id="Education">
-  <div class="sectionTitle">
-    <h1>Education</h1>
-  </div>
-
-  @foreach($education as $education)
-    <div class="sectionContent">
-      <article>
-        <h2>{{$education['degree_title']}}</h2>
-        <h3>{{$education['institute']}}</h3>
-        <p class="subDetails">{{$education['edu_start_date']}} - {{$education['edu_end_date']}}</p>
-        <p>{{$education['education_description']}}</p>
-      </article>
-    </div>
-  @endforeach
-  
-  <div class="clear"></div>
-</section>
-
-      <section id="Languages">
-        <div class="sectionTitle">
-          <h1>Languages</h1>
-        </div>
-
-        @foreach($languages as $languages)
-        <div class="sectionContent">
-          <article>
-            <h2>{{$languages['language']}}</h2>
-            <h3>{{$languages['language_level']}}</h3>
-          </article>
+          </section>
+          <section class="certificates">
+            <div class="section-title">Certificates</div>
+            @foreach($projects as $projects)
+            <div class="certificate-card">
+              <div class="title">{{$projects['project_title']}}</div>
+              <div class="date">{{$projects['project_description']}}</div>
+            </div>
+            @endforeach
+          </section>
+          <section class="education">
+            <div class="section-title">Education</div>
+            @foreach($education as $education)
+            <div class="education-card">
+              <div class="title">{{$education['degree_title']}}</div>
+              <div class="institution">{{$education['institute']}}</div>
+              <div class="date">{{$education['edu_start_date']}} - {{$education['edu_end_date']}}</div>
+            </div>
+            @endforeach
+          </section>
+        </section>
+          <section class="main-section">
+          <section class="experience">
+            <div class="section-title">Skills</div>
+            <div class="experience-card">
+              @foreach ($skills as $skills)
+                        <div class="company">
+                <span class="name">{{$skills['skill_name']}}</span>
+                <span class="duration">{{$skills['skill_percentage']}}</span>
+              </div>
+              @endforeach
         
-        </div> 
-            @endforeach         
-        <div class="clear"></div>
-      </section>
+            </div>
 
+           
+          </section>
+          <section class="certificates">
+            <div class="section-title">Certificates</div>
+            @foreach($interests as $interest)
+            <div class="certificate-card">
+              <div class="title">{{$interest['interest']}}</div>
+            </div>
+            @endforeach
+          </section>
+          <section class="education">
+            <div class="section-title">Education</div>
+            <div class="education-card">
 
-      
-      <section>
-        <div class="address">
-								<div class="item">
-									<div class="contactInfo">
-										Projects
-                    @foreach($projects as $project)
-                    {{ $project['project_title'] }}
-                    {{ $project['project_description'] }}
-                    @endforeach
-									</div>
-								</div>
-							</div>
+              <div class="title">{{$education['degree_title']}}</div>
+              <div class="institution">{{$education['institute']}}</div>
+              <div class="date">{{$education['edu_start_date']}} - {{$education['edu_end_date']}}</div>
+<div class="date">{{$education['education_description']}}</div>
+
+            </div>
+          </section>
+        </section>
       </section>
-      
-      
-      
     </div>
   </div>
+  <script>
+    window.html2canvas = html2canvas;
+    const btnGenerate = document.getElementById("cmd");
+    const source = window.document.getElementById("toPrint");
 
- 
+    function generatePdf() {
+      const pdf = new jsPDF('p', 'pt', [595, 842]);
+      const printSource = source.cloneNode(true);
+      const lists = printSource.getElementsByClassName('experience-list');
 
+      for(const list of lists) {
+        list.style.marginLeft = '10px';
+      }
+
+      pdf.html(printSource, {
+        html2canvas: {
+            scale: 0.75,
+        },
+        callback: function (pdf) {
+          pdf.save('resume.pdf');
+        }
+      });
+    }
+
+    btnGenerate.addEventListener('click', generatePdf);
+
+  </script>
 </body>
+</html>
 
 <style>
-    html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-abbr,
-address,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-samp,
-small,
-strong,
-sub,
-sup,
-var,
-b,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
+  html, body, * {
+  box-sizing: border-box;
+  color: #53555b;
   margin: 0;
   padding: 0;
-  vertical-align: baseline;
 }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-
-/* We need to minimize the use of code, so we will be using roots...this is in the works */
-:root {
-  --highlight: #a29400;
-  --header-font: "Gudea", Helvetica, Arial, sans-serif;
-  --content-font: "Lato", Helvetica, Arial, sans-serif;
-}
-
-html,
-body {
-  background: #fff;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
-  font-feature-settings: "calt","liga","hist","onum","pnum";
-  font-size: 1rem;
-  color: #222;
-}
-
-.clear {
-  clear: both;
-}
-
-#menu {
-  position: fixed;
+button {
+  cursor: pointer;
+  height: 50px;
+  position: absolute;
   right: 0;
-  top: 15%;
-  width: 8em;
-  margin-top: -2.5em;
+  top: 0;
+  width: 150px;
 }
 
-p {
-  font-size: 1em;
-  line-height: 1.4em;
-  margin-bottom: 20px;
-  color: #444;
-  transition: all 1s linear;
-  -o-transition: all 1s linear;
-  -moz-transition: all 1s linear;
-  -webkit-transition: all 1s linear;
-}
-
-a {
-  color: inherit;
-}
-
-.cv {
- //width: 90%;
-  max-width: 54rem;
-  background: #fff;
-  margin: 30px auto;
-}
-
-.cv:hover {
-  cursor: grab;
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
-}
-
-.cv:active {
-  cursor: grabbing;
-  cursor: -moz-grabbing;
-  cursor: -webkit-grabbing;
-}
-
-.mainDetails {
-  padding: 25px 35px;
-  border-bottom: 2px solid #cf8a05;
-  background: #f3f3f3;
-}
-
-#name h1 {
-  font-size: 2.5em;
-  //font-weight: 700;
-  font-family: "Gudea", Helvetica, arial, sans-serif;
-  //font-feature-settings: "caps", "sups" 1;
-  //margin-bottom: -6px;
-}
-
-#name h2 {
-  font-size: 2em;
- // margin-left: 2px;
-  font-family: "Gudea", Helvetica, arial, sans-serif;
-}
-
-#mainArea {
-  padding: 0 40px;
-}
-
-/* I deeply love breakfast burritos */
-.wrap {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.wrap:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-
-#headshot {
-  width: 12.5%;
-  float: left;
-  margin-right: 30px;
-}
-
-#headshot img {
+#main-container {
+  background-image: url(./assets/img//background.jpg);
+  background-size: cover;
+  display: flex;
+  font-weight: 400;
+  justify-content: center;
+  margin: 0;
+  padding-bottom: 10px;
   width: 100%;
-  height: auto;
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
 }
 
-#name {
-  float: left;
+.page {
+  box-sizing: border-box;
+  height: 29.684cm;
+  margin: 0;
+  padding: 0;
+  width: 21.1cm;
 }
 
-#contactDetails {
-  float: right;
+.page > * {
+  margin: 0;
 }
 
-#contactDetails ul {
-  list-style-type: none;
-  font-size: 0.9em;
-  margin-top: 2px;
+header {
+  background-color: rgb(49, 63, 78);
+  height: 9%;
+  padding: 12px 20px;
 }
 
-#contactDetails ul li {
-  margin-bottom: 3px;
-  color: #444;
-  display: inline;
+header .name, header .major {
+  color: white;
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+  margin: 0;
 }
 
-#contactDetails ul li a,
-a[href^="tel"] {
-  color: #444;
-  text-decoration: none;
-  -webkit-transition: all 0.3s ease-in;
-  -moz-transition: all 0.3s ease-in;
-  -o-transition: all 0.3s ease-in;
-  -ms-transition: all 0.3s ease-in;
-  transition: all 0.3s ease-in;
+header .major {
+  font-weight: 100;
+  margin-top: 10px;
 }
 
-#contactDetails ul li a:hover {
-  color: #cf8a05;
+.contents {
+  box-sizing: border-box;
+  display: flex;
+  height: 91%;
+  width: 100%;
 }
 
-section {
-  border-top: 1px solid #dedede;
-  padding: 20px 0 0;
+.main-section {
+  background-color: white;
+  display: inline-block;
+  width: 70%;
 }
 
-section:first-child {
-  border-top: 0;
+.main-section > section,
+.right-section > section {
+  padding: 20px;
 }
 
-section:last-child {
-  padding: 20px 0 10px;
+.highlights {
+  font-family: Helvetica, sans-serif;
+  font-size: small;
+  font-weight: 100;
+  text-align: left;
+  word-spacing: normal;
+  font-variant: normal;
 }
 
-.sectionTitle {
-  float: left;
-  width: 25%;
+li {
+  font-variant: normal;
+  font-weight: 100;
 }
 
-.sectionContent {
-  float: right;
-  width: 72.5%;
+.section-title {
+  border-bottom: 1px solid #bdbdbd;
+  color: rgb(49, 63, 78);
+  font-family: Tahoma, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
 }
 
-.sectionTitle h1 {
-  font-family: "Gudea", helvetica, arial, sans-serif;
-  font-size: 0.89em;
-  color: #cf8a05;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.right-section {
+  background-color: #f5f5f5;
+  display: inline-block;
+  width: 30%;
 }
 
-.sectionContent h2 {
-  font-family: "Gudea", helvetica, arial, sans-serif;
-  font-size: 1.5em;
-  margin-bottom: -2px;
+.experience-card {
+  font-family: Helvetica, sans-serif;
+  padding: 10px 0;
 }
 
-.subDetails {
-  font-size: 80%;
-  //font-style: italic;
-  margin-bottom: 3px;
+.experience-card .title {
+  color: #53555b;
+  font-family: Helvetica, sans-serif;
+  font-size: 17px;
 }
 
-.keySkills {
-  list-style-type: none;
-  -moz-column-count: 3;
-  -webkit-column-count: 3;
-  column-count: 3;
-  margin-bottom: 20px;
-  font-size: 1em;
-  color: #444;
+.experience-card .company {
+  font-family: Helvetica, sans-serif;
+  font-size: 15px;
+  margin-bottom: 10px;
 }
 
-.keySkills ul li {
-  margin-bottom: 3px;
+.experience-card .company .name{
+  color: #919191;
+  font-weight: bold;
 }
 
-
-
-
-
-
-
-@media all and (min-width: 602px) and (max-width: 800px) {
-  #headshot {
-    display: none;
-  }
-
-  .keySkills {
-    -moz-column-count: 2;
-    -webkit-column-count: 2;
-    column-count: 2;
-  }
+.experience-card .company .duration{
+  color: #919191;
+  font-size: 14px;
 }
 
-
-
-
-
-@media all and (max-width: 54rem) {
-  .cv {
-    width: 95%;
-    margin: 10px auto;
-    min-width: 280px;
-    transition: all 0.25s linear;
-    -o-transition: all 0.25s linear;
-    -moz-transition: all 0.25s linear;
-    -webkit-transition: all 0.25s linear;
-  }
-
-  #headshot {
-    display: none;
-  }
-
-  #name,
-  #contactDetails {
-    float: none;
-    width: 100%;
-    text-align: center;
-  }
-
-  .sectionTitle,
-  .sectionContent {
-    float: none;
-    width: 100%;
-  }
-
-  .sectionTitle {
-    margin-left: -2px;
-    font-size: 1.25em;
-  }
-
-  .keySkills {
-    -moz-column-count: 2;
-    -webkit-column-count: 2;
-    column-count: 2;
-  }
+ul {
+  font-family: Helvetica, sans-serif;
+  font-size: small;
+  list-style: disc;
+  list-style-position: inside;
 }
 
-@media all and (max-width: 480px) {
-  .mainDetails {
-    padding: 15px 15px;
-  }
-
-  section {
-    padding: 15px 0 0;
-  }
-
-  #mainArea {
-    padding: 0 25px;
-  }
-
-  .keySkills {
-    -moz-column-count: 1;
-    -webkit-column-count: 1;
-    column-count: 1;
-  }
-
-  #name h1 {
-    line-height: 0.8em;
-    margin-bottom: 4px;
-  }
+.certificate-card {
+  color: #53555b;
+  font-family: Helvetica, sans-serif;
+  margin: 8px 0;
 }
 
-@media print {
-  .cv {
-    width: 100%;
-  }
+.date {
+  color: #919191;
+  font-size: small;
 }
 
-
-
-
-
-
-
-
-
-@-webkit-keyframes reset {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
+.education-card {
+  color: #53555b;
+  font-family: Helvetica, sans-serif;
+  margin: 8px 0;
 }
 
-@-webkit-keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  40% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.education-card .institution{
+  font-size: small;
 }
 
-@-moz-keyframes reset {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
+.info-item {
+  color: #53555b;
+  font-family: Helvetica, sans-serif;
+  font-size: small;
+  margin-top: 10px;
 }
 
-@-moz-keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  40% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.info-item .info {
+  display: block;
+  font-weight: 100;
+  margin-top: 6px;
 }
 
-@keyframes reset {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
+.skill-card {
+  display: flex;
+  font-family: Helvetica, sans-serif;
+  font-size: small;
+  justify-content: space-between;
+  padding: 20px 0;
 }
 
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  40% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.skill-level-container {
+  display: flex;
 }
 
-.instaFade {
-  -webkit-animation-name: reset, fade-in;
-  -webkit-animation-duration: 1.5s;
-  -webkit-animation-timing-function: ease-in;
-
-  -moz-animation-name: reset, fade-in;
-  -moz-animation-duration: 1.5s;
-  -moz-animation-timing-function: ease-in;
-
-  animation-name: reset, fade-in;
-  animation-duration: 1.5s;
-  animation-timing-function: ease-in;
+.disc {
+  background-color: #c2c2c2;
+  border-radius: 50%;
+  display: inline-block;
+  height: 12px;
+  margin-right: 2px;
+  width: 12px;
+  position: relative;
 }
 
-.quickFade {
-  -webkit-animation-name: reset, fade-in;
-  -webkit-animation-duration: 2.5s;
-  -webkit-animation-timing-function: ease-in;
-
-  -moz-animation-name: reset, fade-in;
-  -moz-animation-duration: 2.5s;
-  -moz-animation-timing-function: ease-in;
-
-  animation-name: reset, fade-in;
-  animation-duration: 2.5s;
-  animation-timing-function: ease-in;
+.fill {
+  background-color: rgb(49, 63, 78);
 }
 
-.delayOne {
-  -webkit-animation-delay: 0, 0.5s;
-  -moz-animation-delay: 0, 0.5s;
-  animation-delay: 0, 0.5s;
+.half-disc-left{
+  height:12px;
+  width:6px;
+  border-radius: 90px 0 0 90px;
+  background:rgb(49, 63, 78);
 }
 
-.delayTwo {
-  -webkit-animation-delay: 0, 1s;
-  -moz-animation-delay: 0, 1s;
-  animation-delay: 0, 1s;
-}
-
-.delayThree {
-  -webkit-animation-delay: 0, 1.5s;
-  -moz-animation-delay: 0, 1.5s;
-  animation-delay: 0, 1.5s;
-}
-
-.delayFour {
-  -webkit-animation-delay: 0, 2s;
-  -moz-animation-delay: 0, 2s;
-  animation-delay: 0, 2s;
-}
-
-.delayFive {
-  -webkit-animation-delay: 0, 2.5s;
-  -moz-animation-delay: 0, 2.5s;
-  animation-delay: 0, 2.5s;
+.concentric-half {
+  background-color: rgb(49, 63, 78);
+  height: 6px;
+  width: 6px;
+  position: absolute;
+  top: 25%;
+  left: 25%;
 }
 </style>
-<script>
-    $(function() {
-  $("#drag").draggable();
-});
-</script>

@@ -37,12 +37,12 @@
         </div>
         <div class="col">
             <button class="btn btn-success">
-                <a href="/account/cv/download-cv" style="color:white;">Download CV</a>
+                <a href="/account/cv/download-cv/{{ $info['id']}}" style="color:white;">Download CV</a>
             </button>
         </div>
            <div class="col">
             <button class="btn btn-primary mr-2">
-                <a href="/search" style="color:white;">Job Portal</a>
+                <a href="/search/{{ $info['id']}}" style="color:white;">Job Portal</a>
             </button>
         </div>
     </div>
