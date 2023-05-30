@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JobApplication;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\PersonalInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +20,9 @@ class AccountController extends Controller
     }
     public function index()
     {
-        return view('account.user-account');
+    $userId = auth()->id();
+    $personal_information = PersonalInformation::where('user_id', $userId)->get()->toArray();
+        return view('account.user-account', compact('personal_information'));
     }
 
     public function becomeEmployerView()

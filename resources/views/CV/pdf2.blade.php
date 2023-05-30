@@ -1,281 +1,282 @@
-<div class="page">
-  <header class="cv-header">
- 
-    <h1 class="cv-main-title"> {{$personal_information['first_name']}}</h1>
- 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CV - Ocat</title>
+  <meta name="description" content="simple CV example created with HTML and CSS">
+  <meta name="author" content="Fly Nerd">
+  <link rel="icon" href="./img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    
+    <div>
+          <h2 style="color:black;">{{$personal_information['first_name']}} {{$personal_information['last_name']}}</h2>
+
+  <img src="assets/images/{{ $personal_information['image_path'] }}" class="name" style="width:20%; float:right;">
+    </div>
    
+    <p>{{$personal_information['about_me']}} </p>
+    <section>
+      <a href="{{$contact_information['twitter']}}" target="_blank">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="{{$contact_information['github_link']}}" target="_blank">
+        <i class="fab fa-github-alt"></i>
+      </a>
+      <a href="{{$contact_information['linkedin_link']}}" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+       <a href="{{$contact_information['website']}}" target="_blank">
+      </a>
+    </section>
   </header>
-  <main class="cv-main">
-    <article class="cv-article cv-etudes">
-      <h2 class="cv-article-title">Education</h2>
+  <main>
+    <h4 style="color:black;">Email: {{$contact_information['email']}}<br /> Phone Number: {{$contact_information['phone_number']}}</h4>
+     <section>
+      <h3>About Me:</h3>
+      <article>
+        <div class="descrition">
+          {{$personal_information['about_me']}}
+        </div>
+      </article>
+    </section>
+  
+
+    <section>
+      <h3>Education</h3>
       @foreach($education as $education)
-      <h3 class="cv-article-deuxieme-annee">{{$education['degree_title']}}<span style="color:gray; display:block; font-weight:lighter; font-size:0.8em;">{{ $education['edu_start_date'] }} - {{ $education['edu_end_date'] }}</span></h3>
+      <article>
+        <div class='school'>
+          <span>{{$education['edu_start_date']}}-{{$education['edu_end_date']}}</span> <strong>{{$education['institute']}}</strong>
+        </div>
+        <div class="descrition">
+          {{$education['degree_title']}}
+        </div>
+         <div class="descrition">
+          {{$education['education_description']}}
+        </div>
+      </article>
       @endforeach
-    </article>
-
-    <article class="cv-article cv-parcours">
-      <h2 class="cv-article-title">Experience</h2>
-      @foreach($experience as $job)
-      <h3 class="cv-article-mediation">{{$job['job_title']}}<span style="color:gray; display:block; font-weight:lighter; font-size:0.8em;">Juillet - Août 2015</span></h3>
-      <p>Start Date:{{$job['job_start_date']}} - End Date:{{$job['job_end_date']}}</p>
-      <p>Description:{{$job['job_description']}}</p>
+    </section>
+    <section>
+      <h3>Experience</h3>
+      @foreach($experience as $experience)
+      <article>
+        <div class='job-title'>
+          <span>{{$experience['job_start_date']}}</span> <strong>{{$experience['organization']}}</strong><br> <strong>Position:</strong> {{$experience['job_title']}} <br /> {{$experience['job_description']}}
+        </div>
+      </article>
       @endforeach
-    </article>
+    </section>
 
-    <article class="cv-autre">
-
-
-      <h3 class="cv-article-competences">Languages</h3>
-
-      @foreach($languages as $language)
-      <div class="skills">
-   
-
-        <br />
-            <span>{{$language['language']}}</span><br />
-            <span class="skill-percent">{{$language['language_level']}}</span><br />
-            <br />
-
- 
+    <section>
+      <h3>Skills</h3>
+      <div class='skills'>
+        <div class='column'>
+          @foreach($skills as $skills)
+          <div class='job-title'>
+            <strong>{{$skills['skill_name']}}</strong>
+          </div>
+          @endforeach
+        </div>
+        <div>
+          <h4>Languages</h4>
+          @foreach($languages as $language)
+          <p>{{$language['language']}}</p>
+          @endforeach
+        </div>
       </div>
+    </section>
+      <section>
+      <h3>Interests</h3>
+      @foreach($interests as $interest)
+      <article class='course'>
+        <div class='title'>
+          <h4>{{$interest['interest']}}</h4>
+        </div>
+      </article>
       @endforeach
-
-       </article>
-
-    <article class="cv-autre">
-       <h3 class="cv-article-competences">Skills</h3>
-
-
-       @foreach($skills as $skill)
-      <div class="skills">
-   
-            <span>{{$skill['skill_name']}}</span>
- 
-      </div>
-      @endforeach
-
-
-
-    </article>
-
+    </section>
   </main>
-
-
-
-
-</div>
+  <footer>
+    <p>CJ Resume </a> / 2023 </p>
+  </footer>
+</body>
+</html>
 
 <style>
-  @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
 
 body {
-  font-family: Montserrat, sans-serif;
   margin: 0;
-  padding: 0;
-  background-color: #4B4B4B;
-  margin-top: 2em;
+  font-family: 'Raleway';
+  font-size: 16px;
+  line-height: 1.8em;
 }
 
-.menu {
-  position: fixed;
-  background-color: #080808;
-  padding: 0.8em;
-  top: 0;
-  left: 0;
-  right: 0;
+a {
+  color: #000;
+  text-decoration: none;
 }
 
-.menu ul {
-  color: white;
-  padding: 0;
-  margin: 0 auto;
-  width: 300px;
-  text-align: center;
+a:hover {
+  opacity: 0.5;
 }
-
-.menu ul li {
-  display: inline;
-  margin:0.7em;
-}
-
-.menu a {
-  color: #fff;
-}
-
-
-
-
-
-.page {
-  width: 80vw;
-  margin: 0 auto;
-  background-color: #2F2F2F;
-}
-
-.cv-header {
-  text-transform: uppercase;
-  background-color: rgba(0,0,0,.2);
-  text-align: center;
-  color: rgba(0,0,0,.5);
-  padding: 2em;
-}
-
-.cv-main-title {
-  margin: 0;
-  font-size: 7vw;
-  margin-bottom: 1em;
-  color: rgb(99, 171, 79);
-}
-
-.main-header h1:hover{
-  color: red;
-}
-
-.cv-main-title small {
-  text-transform: lowercase;
-  color: rgb(240, 242, 240);
-  font-size: 0.32em;
-  font-weight: lighter;
-}
-
-.cv-main-title-signature {
-  display: block
-}
-
-.cv-pic {
-  width: 10em;
-  height: auto;
-  background-color: #fff;
-  border: 0.8em rgb(150, 207, 134) solid;
-  border-radius: 50%;
-  padding: 0.8em;
-  margin-bottom: -8em;
-}
-
-.cv-main {
-  text-align: center;
-  background-color: #eee;
-  color: #333;
-  padding: 1em;
-
-}
-
-.cv-article {
-  border-bottom: 2px #333 solid;
-  padding-bottom: 3em;
-  margin-bottom: 3em;
-}
-.cv-article-title {
-  text-transform: uppercase;
-  margin-top: 1em;
-}
-
-.cv-etudes {
-  margin-top: 6.5em;
-}
-
 
 article {
-   margin-top: 2em;
+  padding:0 1em;
 }
 
+section{
+  margin: 1em;
+  padding: 1em;
+}
+
+header, main, footer {
+  margin: 0 auto;
+}
+
+header {
+  padding: 2em;
+  text-align: center;
+  background-image: url('./img/bg.jpg');
+  background-size: cover;
+  background-position: fixed;
+  color: white;
+}
+
+header section {
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+header img {
+  border-radius: 50%;
+  max-width: 150px;
+}
+
+h1 {
+  text-transform: uppercase;
+  margin: 1em 0;
+}
 
 h3 {
-  margin: 0 auto;
+  text-transform: uppercase;
 }
 
-
-/*compétences*/
-
-
-.skills { 
-  width: 50%;
-  margin: 0 auto;
-  padding:0;
-  text-align: left;
-  float: auto;
-  padding-top: 0.5em;
-  }
-
-ul.skillset {
-  float: center;
-  width: 100%;
-  }
-
-.skill-percent { 
-  float: right; 
-  }
-
-li.skill-bar {
-  background-color: #7BC673;
-  color: #FFF;
-  font: bold 12px/23px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-  margin-bottom: 3px;
-  padding: 2px 8px;
-  width: 300px; 
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
-     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);        
-  }
-
-
-
-
-.cv-article-interets {
-  padding-top: 2em;
+h3, h4 {
+  font-weight: bold;
 }
 
-
-.col {
-  width: 50%;
-  float: left;
+main {
+  max-width: 1140px;
 }
 
-.row {
-  overflow: hidden;
-  width: 100%;
-  margin: 0 auto;
+main section:not(:last-child) {
+  border-bottom: 1px solid #ccc;
 }
 
-.clear {
-  both
-}
-
-li {
-  list-style: none;
-}
-
-p {
+.fab {
+  border: 1px solid white;
+  border-radius: 50%;
+  font-size: 1.5em;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  margin: 5px;
   text-align: center;
 }
 
-.pratiques {
-  font-weight: bolder;
-}
-.autres {
-  font-weight: bolder;
+a .fab {
+  color: white;
 }
 
-
-
-.main-footer {
-  background-color: rgba(0,0,0,.5);
-  padding: 2em;
-  color: rgb(99, 171, 79);
+.course, .skills {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
-.main-footer p {
-  font-size: 1em;
-  font-weight: lighter;
-  font-style: none;
-  text-align: left;
-  margin: 0;
+.course .title {
+  color: #000;
+  -ms-flex: 0 0 33.3%;
+  flex: 0 0 33.3%;
+  max-width: 33%;
 }
-.main-footer a {
-  color: inherit
+
+.course .descrition {
+  -ms-flex: 0 0 66.6%;
+  flex: 0 0 66.6%;
+  max-width: 66.6%;
+}
+
+.course .descrition p {
+  padding-left: 1em;
+}
+
+.skills .column {
+  -ms-flex: 0 0 50%%;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.skills .column ul, ul.job-description {
+  list-style-type: none;
+}
+
+.skills .column ul > li:before {
+  content: "►";
+  padding-right: 0.5em;
+  color: #000;
+}
+
+.school, .job-title {
+  text-transform: capitalize;
+}
+
+.school span, .job-title span {
+  color: #889499;
+  text-decoration: underline;
+}
+
+ul.job-description li:before{
+  content: "✔";
+  padding-right: 0.5em;
+  color: #000;
+}
+
+footer {
+ padding: 1em 1.5em;
+ background: #A7B8BF;
+ color: white;
+ text-align: right;
+}
+
+@media only screen and (max-width: 768px) {
+  .course {
+    display: block;
+  }
+
+  .course .title, .course .descrition {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .skills {
+    display: block;
+  }
+
+  .skills .column {
+    max-width: 100%;
+  }
+
+  footer {
+    text-align: center;
+  }
 }
 </style>

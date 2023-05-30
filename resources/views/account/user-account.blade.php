@@ -95,6 +95,7 @@
                 <div class="row m-l-0 m-r-0">
                     <div class="col-sm-4 bg-c-lite-green user-profile">
                         <div class="card-block text-center text-white">
+                            <img src="/assets/images/{{$personal_information[0]['image_path']}}"
                             <h6 class="f-w-600">{{auth()->user()->name}}</h6>
                             @role('user')
                             <p style="color:#000">User</p> 

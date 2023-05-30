@@ -12,10 +12,16 @@
   <div id="main-container">
     <div class="page" id="toPrint">
 
-        <h1 class="name" style="background-color: #53555b;color:#fff ">{{$personal_information['first_name']}}</h1>
-
+        <h1 class="name" style="background-color: #53555b;color:#fff; font-size:50px; ">{{$personal_information['profile_title']}} {{$personal_information['first_name']}} {{$personal_information['last_name']}} <br /></h1>
+        
+<img src="assets/images/{{ $personal_information['image_path'] }}" class="name" style="width:20%; float:right;">
       <section class="contents">
         <section class="main-section">
+          Phone Number: {{$contact_information['phone_number']}} <br /> Email:{{$contact_information['email']}}
+          <section class="experience">
+            <div class="section-title">About Me</div>
+            {{ $personal_information['about_me']}}
+          </section>
           <section class="experience">
             <div class="section-title">Experience</div>
             @foreach($experience as $experience)
@@ -46,9 +52,9 @@
             <div class="section-title">Education</div>
             @foreach($education as $education)
             <div class="education-card">
+              <div class="institution">{{$education['institute']}} - {{$education['edu_start_date']}} - {{$education['edu_end_date']}}</div>
               <div class="title">{{$education['degree_title']}}</div>
-              <div class="institution">{{$education['institute']}}</div>
-              <div class="date">{{$education['edu_start_date']}} - {{$education['edu_end_date']}}</div>
+              <div class="date">{{$education['education_description']}}</div>
             </div>
             @endforeach
           </section>
@@ -60,7 +66,6 @@
               @foreach ($skills as $skills)
                         <div class="company">
                 <span class="name">{{$skills['skill_name']}}</span>
-                <span class="duration">{{$skills['skill_percentage']}}</span>
               </div>
               @endforeach
         
@@ -76,17 +81,7 @@
             </div>
             @endforeach
           </section>
-          <section class="education">
-            <div class="section-title">Education</div>
-            <div class="education-card">
 
-              <div class="title">{{$education['degree_title']}}</div>
-              <div class="institution">{{$education['institute']}}</div>
-              <div class="date">{{$education['edu_start_date']}} - {{$education['edu_end_date']}}</div>
-<div class="date">{{$education['education_description']}}</div>
-
-            </div>
-          </section>
         </section>
       </section>
     </div>

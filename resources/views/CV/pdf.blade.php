@@ -6,82 +6,79 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   
-<div id="page">
-
-    <div class="photo-and-name">
-        <div class="contact-info-box">
-            <h1 class="name">{{$personal_information['first_name']}}</h1>
-            <br>
-            <h3 class="job-title">{{$personal_information['profile_title']}}</h3>
-
-
-            <p class="contact-details">Phone: {{ $contact_information['phone_number']}} &nbsp; - &nbsp; Email: {{ $contact_information['email']}}</p>
-            <p class="contact-details">Github: {{ $contact_information['github_link']}} &nbsp; - &nbsp; LinkedIn: {{ $contact_information['linkedin_link']}}</p>
-
-        </div>
-    </div>
-    <div id="objective">
-        <h3>Objective</h3>
-        <p>
-            {{$personal_information['about_me']}}
-        </p>
-    </div>
-    <div id="education">
-        <h3>Education</h3>
-         @foreach($education as $education)
-        <table>
-            <tr class="school-1">
-                <td rowspan="2">{{ $education['edu_start_date']}} - {{$education['edu_end_date']}}</td>
-                <td><b>{{ $education['institute'] }}</b>{{ $education['degree_title']}}</td>
-            </tr>
-          @endforeach
-        </table>
-    </div>
-    <div id="work">
-        <h3>Experience</h3>
-        <table>
-          @foreach($experience as $experience)
-            <tr class="work-1">
-                <td>{{ $experience['job_start_date']}} - {{ $experience['job_end_date']}}</td>
-                <td><b>{{ $experience['organization']}}</b>:{{ $experience['job_description']}}</td>
-            </tr>
-          @endforeach
-        </table>
-    </div>
-    <div id="bio-data">
-        <h3>Skill</h3>
-        <table>
-          @foreach($skills as $skill)
-            <tr>
-                <td>Name:{{ $skill['skill_name']}}</td>
-                <td><b>Percentage:{{ $skill['skill_percentage']}}</b></td>
-            </tr>
-            @endforeach
-        </table>
-         <h3>Languages</h3>
-        <table>
-          @foreach($languages as $languages) 
-            <tr>
-                <td>Name:{{ $languages['language']}}</td>
-                <td><b>Percentage:{{ $languages['language_level']}}</b></td>
-            </tr>
-            @endforeach
-        </table>
-
-        <h3>Interests</h3>
-        <table>
-          @foreach($interests as $interests) 
-            <tr>
-                <td>Name:{{ $interests['interest']}}</td>
-            </tr>
-            @endforeach
-        </table>
-        
-        
-    </div>
+    <div id="page">
+        <div class="photo-and-name">
+  <div class="contact-info-box">
+  <img src="assets/images/{{ $personal_information['image_path'] }}" class="name" style="width:20%; float:right;">
+    <h1 class="name">{{ $personal_information['first_name'] }} {{ $personal_information['last_name'] }}</h1>
+    <br>
+    <h3 class="job-title">{{ $personal_information['profile_title'] }}</h3>
+    <p class="contact-details">
+      Phone: {{ $contact_information['phone_number'] }} &nbsp; - &nbsp; Email: {{ $contact_information['email'] }}
+    </p>
+    <p class="contact-details">
+      Github: {{ $contact_information['github_link'] }} &nbsp; - &nbsp; LinkedIn: {{ $contact_information['linkedin_link'] }}
+    </p>
+  </div>
 </div>
 
+        <div id="objective">
+            <h3>Objective</h3>
+            <p>
+                {{$personal_information['about_me']}}
+            </p>
+        </div>
+        <div id="education">
+            <h3>Education</h3>
+         
+                @foreach($education as $education)
+               
+             {{ $education['institute'] }} - {{ $education['degree_title']}}<br /> {{ $education['edu_start_date']}} - {{$education['edu_end_date']}}<br />{{$education['education_description']}}
+              
+                @endforeach
+         
+        </div>
+        <div id="work">
+            <h3>Experience</h3>
+
+                @foreach($experience as $experience)
+
+                      <b>{{ $experience['organization']}} - {{ $experience['job_start_date']}}</b><br />
+                            {{ $experience['job_title']}} <br />
+                            {{ $experience['job_description']}}
+
+                @endforeach
+
+
+            </table>
+        </div>
+        <div id="bio-data">
+            <h3>Skill</h3>
+            <table>
+                @foreach($skills as $skill)
+                    <tr>
+                        <td>{{ $skill['skill_name']}}</td>
+                    </tr>
+                @endforeach
+            </table>
+            <h3>Languages</h3>
+            <table>
+                @foreach($languages as $languages) 
+                    <tr>
+                        <td>{{ $languages['language']}}</td>
+                    </tr>
+                @endforeach
+            </table>
+            <h3>Interests</h3>
+            <table>
+                @foreach($interests as $interests) 
+                    <tr>
+                        <td>{{ $interests['interest']}}</td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+    </div>
 </body>
 </html>
 
@@ -97,7 +94,7 @@ body{font-family: 'Montserrat', sans-serif;}
     background: whitesmoke;
     margin: 50px auto;
     padding: 30px;
-    color: #27aae1;
+    color: #000;
 }
 
 .photo-and-name {
@@ -124,8 +121,8 @@ body{font-family: 'Montserrat', sans-serif;}
 }
 
 .contact-details {
-    background: #27aae1;
-    color: white;
+    background: #fff;
+    color: #000;
     text-align: center;
     margin: auto;
     margin-top: 25px;
@@ -226,4 +223,5 @@ body{font-family: 'Montserrat', sans-serif;}
 #bio-data table tr td:nth-child(2) {
     width: 300px;
 }
+
 </style>

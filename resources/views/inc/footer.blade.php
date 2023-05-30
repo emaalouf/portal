@@ -6,12 +6,12 @@
 
             <div class="col-lg-6 col-12 mb-5 mb-lg-0">
                 <div class="subscribe-form-wrap">
-                    <h6>Subscribe. Every weekly.</h6>
+                    <h6 style="color:black;">Subscribe. Every weekly.</h6>
 
                     <form class="custom-form subscribe-form" action="#" method="get" role="form">
                         <input type="email" name="subscribe-email" id="subscribe-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Your Email Address" required>
 
-                        <button type="submit" class="form-control" id="subscribe-submit">Subscribe</button>
+                        <button type="submit" class="form-control" id="subscribe-submit" style="background-color:#808080;margin-top:30px;">Subscribe</button>
                     </form>
 
                 </div>
@@ -20,17 +20,17 @@
             <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                 <h3 class="footer-heading">Products</h3>
                 <ul class="list-unstyled">
-                    <li><a href="/account/cv/create">Create CV</a></li>
-                    <li><a href="/CVTemplates">CV Templates</a></li>
+                    <li><a href="/account/cv/create" style="color:white;margin-top:10px;">Create CV</a></li>
+                    <li><a href="/CVTemplates" style="color:white;margin-top:10px;">CV Templates</a></li>
                 </ul>
             </div>
 
             <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="list-unstyled">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/" style="color:white;margin-top:10px;">Home</a></li>
+                    <li><a href="/about" style="color:white;margin-top:10px;">About Us</a></li>
+                    <li><a href="/contact" style="color:white;margin-top:10px;">Contact Us</a></li>
                 </ul>
             </div>
 

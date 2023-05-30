@@ -12,6 +12,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\savedJobController;
 use App\Http\Controllers\UserprofileController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\NLPController;
 use App\Http\Controllers\CVController;
 use Illuminate\Support\Facades\Route;
 
@@ -109,4 +110,5 @@ Route::get('contact-us', [ContactUsController::class, 'show'])->name('contact-us
 Route::post('contact-us', [ContactUsController::class, 'send'])->name('contact-us.send');
 Route::get('/getabout', [AboutPageController::class, 'index']);
 Route::post('/postabout', [AboutPageController::class, 'submit']);
+Route::get('/getNLP', [NLPController::class, 'index']);
 
