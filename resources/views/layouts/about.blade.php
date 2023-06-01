@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -53,41 +53,56 @@
 
                 <!-- Our Story/Company History -->
                 <h2>Our Story</h2>
-                <p>  @foreach($AboutPage as $about)
-                  <p class="about-text"><em><strong>{{$about['content']}}</strong></em></p>
-                @endforeach</p>
+                <p class="about-text">
+                  @foreach($AboutPage as $about)
+                    {{$about['content']}}
+                  @endforeach
+                </p>
 
                 <!-- Mission and Vision -->
                 <h2>Mission and Vision</h2>
-                <p>Describe your company's mission and vision statements here.</p>
+                <p>Our mission is to help people create professional CVs. Our vision is to be the leading provider of CV creation tools and services.</p>
 
                 <!-- Core Values -->
                 <h2>Core Values</h2>
-                <p>Outline your company's core values and guiding principles.</p>
+                <p>Our core values are:
+                  * Excellence
+                  * Innovation
+                  * Customer satisfaction</p>
 
                 <!-- Team Members/Leadership -->
                 <h2>Our Team</h2>
-                <p>Introduce key members of your team or leadership with their bios and photos.</p>
+                <p>Our team is made up of experienced professionals who are passionate about helping people create professional CVs. We are committed to providing our customers with the best possible service.</p>
 
                 <!-- Services/Products -->
                 <h2>Our Services/Products</h2>
-                <p>Describe the services or products your company offers.</p>
+                <p>We offer a variety of services and products to help people create professional CVs, including:
+                  * CV templates
+                  * CV writing assistance
+                  * CV editing services</p>
 
                 <!-- Client Testimonials -->
                 <h2>Client Testimonials</h2>
-                <p>Include testimonials from satisfied clients or customers.</p>
+                <p>We are proud to have a number of satisfied customers who have used our services to create professional CVs. Here are some of their testimonials:
+                  * "I was very impressed with the quality of the CV that I received from CJ Platform. The writer took the time to understand my needs and created a CV that was tailored to my specific requirements. I would highly recommend CJ Platform to anyone who is looking for help with creating a professional CV." - John Smith
+                  * "I was very happy with the services provided by CJ Platform. The writer was very professional and helpful, and I was very pleased with the final product. I would definitely recommend CJ Platform to anyone who is looking for help with creating a CV." - Jane Doe</p>
 
                 <!-- Awards and Recognition -->
                 <h2>Awards and Recognition</h2>
-                <p>Showcase any awards, certifications, or industry recognition you have received.</p>
+                <p>We have been recognized for our excellence in CV creation by a number of industry awards, including:
+                  * "Best CV Writing Service" - 2022 CV</p>
 
-                <!-- Social Responsibility/Philanthropy -->
+                 <!-- Social Responsibility/Philanthropy -->
                 <h2>Social Responsibility</h2>
-                <p>Highlight your company's social responsibility efforts or philanthropic activities.</p>
+                <p>We are committed to giving back to our community. We support a number of social responsibility initiatives, including:
+                  * The CJ Platform Foundation, which provides scholarships to students pursuing careers in the workforce development field.
+                  * The CJ Platform Volunteer Program, which allows our employees to volunteer their time to local organizations.</p>
 
                 <!-- Partnerships/Collaborations -->
                 <h2>Partnerships and Collaborations</h2>
-                <p>Showcase your strategic partnerships or collaborations with other organizations.</p>
+                <p>We are committed to building strong partnerships with other organizations. We collaborate with a number of organizations, including:
+                  * The Workforce Development Council, which helps to connect job seekers with employment opportunities.
+                  * The Chamber of Commerce, which advocates for the interests of businesses in our community.</p>
               </div>
             </div>
           </div>

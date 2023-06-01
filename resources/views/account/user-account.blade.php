@@ -95,7 +95,7 @@
                 <div class="row m-l-0 m-r-0">
                     <div class="col-sm-4 bg-c-lite-green user-profile">
                         <div class="card-block text-center text-white">
-                            <img src="/assets/images/{{$personal_information[0]['image_path']}}"
+                            <img src="/assets/images/{{ isset($personal_information[0]['image_path']) ? $personal_information[0]['image_path'] : '' }}">
                             <h6 class="f-w-600">{{auth()->user()->name}}</h6>
                             @role('user')
                             <p style="color:#000">User</p> 
@@ -126,7 +126,7 @@
                              <div class="row">
                                 <div class="col-sm-6">
                                     <u><p class="m-b-10 f-w-600">Take me to job portal</p></u>
-                                    <a href="/search" class="btn primary-outline-btn">Job Portal</a>
+                                    <a href="/getNLP" class="btn primary-outline-btn">Job Portal</a>
                                 </div>
                             </div>
                              <div class="row">

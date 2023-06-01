@@ -61,14 +61,27 @@
                     </tr>
                 @endforeach
             </table>
-            <h3>Languages</h3>
-            <table>
-                @foreach($languages as $languages) 
-                    <tr>
-                        <td>{{ $languages['language']}}</td>
-                    </tr>
-                @endforeach
-            </table>
+           <h3>Languages</h3>
+<table>
+    @foreach($languages as $language)
+        <tr>
+            <td>
+                @if($language['language'] === 'en')
+                    English
+                @elseif($language['language'] === 'ar')
+                    Arabic
+                @elseif($language['language'] === 'fr')
+                   French
+                @elseif($language['language'] === 'es')
+                   Spanish
+                @else
+                    {{ $language['language'] }}
+                @endif
+            </td>
+        </tr>
+    @endforeach
+</table>
+
             <h3>Interests</h3>
             <table>
                 @foreach($interests as $interests) 

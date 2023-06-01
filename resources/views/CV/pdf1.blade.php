@@ -81,6 +81,26 @@
             </div>
             @endforeach
           </section>
+          <section>
+              <div>
+          <h4>Languages</h4>
+            @foreach($languages as $language)
+   
+                @if($language['language'] === 'en')
+                    English
+                @elseif($language['language'] === 'ar')
+                    Arabic
+                @elseif($language['language'] === 'fr')
+                   French
+                @elseif($language['language'] === 'es')
+                   Spanish
+                @else
+                    {{ $language['language'] }}
+                @endif
+
+    @endforeach
+        </div>
+          </section>
 
         </section>
       </section>
